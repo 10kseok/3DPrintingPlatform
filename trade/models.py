@@ -1,11 +1,11 @@
 import uuid
 from django.db import models
-from buy.models import Buyer
+#from buy.models import Buyer
 from sell.models import Seller
 
 # Create your models here.
 # 견적
-class Estimate(models.Model):
+"""class Estimate(models.Model):
     estimate_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     buyer_id = models.ForeignKey(Buyer, on_delete=models.CASCADE)
     project_name = models.CharField(max_length=30)
@@ -15,6 +15,7 @@ class Estimate(models.Model):
     detail = models.TextField()
     drawing = models.FileField()
     reg_date = models.DateTimeField()
+"""
 # 입찰
 class Bid(models.Model):
     bid_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">견적등록</h5>
+    <form method="post">
+        {% csrf_token %}
+        <!-- 오류표시 Start -->
+        <!--{% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <div>
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}-->
+        <!-- 오류표시 End -->
+        <div class="mb-3">
+            <label for="project_name" class="form-label">프로젝트명</label>
+            <input type="text" class="form-control" name="project_name" id="project_name"
+                   value="{{ form.project_name.value|default_if_none:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="material" class="form-label">재료</label>
+            <textarea class="form-control" name="material"
+                      id="material" rows="2">{{ form.material.value|default_if_none:'' }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="method" class="form-label">가공방식</label>
+            <textarea class="form-control" name="method"
+                      id="method" rows="2">{{ form.method.value|default_if_none:'' }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="pieces" class="form-label">수량</label>
+            <textarea class="form-control" name="pieces"
+                      id="pieces" rows="2">{{ form.pieces.value|default_if_none:'' }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="detail" class="form-label">후가공</label>
+            <textarea class="form-control" name="detail"
+                      id="detail" rows="2">{{ form.detail.value|default_if_none:'' }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="drawing" class="form-label">도면</label>
+            <input type="file" name="drawing" id="drawing">
+        </div>
+        <button type="submit" class="btn btn-primary">등록하기</button>
+    </form>
+</div>
+{% endblock %}
