@@ -18,14 +18,14 @@
         <a href="common/signup_buyer.html">
             <button type="button" class="btn btn-primary">구매자 회원가입</button>
         </a>
-        <a href="common/signup_seller.html">
-            <button type="button" class="btn btn-primary">판매자 회원가입</button>
-        </a>
+        <button type="button" class="btn btn-primary"
+                href={% url 'common:signup_seller' %}>판매자 회원가입
+        </button>
     </div>
     <div>
-        <a href="common/login.html">
-            <button type="button">로그인</button>
-        </a>
+        <!--<a href="common/login.html">-->
+        <button href="{% url 'common:login' %}">로그인</button>
+        <!--</a>-->
     </div>
 
 

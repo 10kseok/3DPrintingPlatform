@@ -10,3 +10,42 @@
     <!-- buy CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
+<body>
+    <div class="container my-3">
+        <form method="post" action="{% url 'common:signup' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <div class="mb-3">
+                <label for="buyer_id">사용자 이름</label>
+                <input type="text" class="form-control" name="buyer_id" id="buyer_id"
+                       value="{{ form.buyer_id.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="PW1">비밀번호</label>
+                <input type="password" class="form-control" name="PW1" id="PW1"
+                       value="{{ form.PW1.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="PW2">비밀번호 확인</label>
+                <input type="password" class="form-control" name="PW2" id="PW2"
+                       value="{{ form.PW2.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="email">이메일</label>
+                <input type="text" class="form-control" name="email" id="email"
+                       value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="TEL">전화번호</label>
+                <input type="tel" class="form-control" name="TEL" id="TEL"
+                       value="{{ form.TEL.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="address">주소</label>
+                <input type="text" class="form-control" name="address" id="address"
+                       value="{{ form.address.value|default_if_none:'' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">생성하기</button>
+        </form>
+    </div>
+</body>
