@@ -15,6 +15,9 @@ class Estimate(models.Model):
     detail = models.TextField()
     drawing = models.FileField()
     reg_date = models.DateTimeField()
+
+    def __str__(self) -> str:
+        return f"{self.estimate_id}"
 # 입찰
 class Bid(models.Model):
     bid_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
