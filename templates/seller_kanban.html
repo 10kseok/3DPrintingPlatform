@@ -19,35 +19,29 @@
     <button style="width: 100px; height:30px; font-size:20px; float:right;">내정보</button>
     <br><br><br><br><br><br>
     <div id="Left">
-        <h1 id="Head">경매품목</h1>
-        <br><br>
-                
-                {% comment %} <ul>구매자: A</ul>
-                <ul>제품명: 짱구</ul>
-                <ul>희망 재료: 필라멘트</ul>
-                <ul>제작 방식: FDM</ul>
-                <ul>요청 사항: 마감, 도색</ul> {% endcomment %}
-                {% if estimates %}
-                    {% for est in estimates %}
-                    <a href="page_29.html"><button id="LeftItem">
-                        <ul style="float: center; list-style:none">
-                            <div style="float: left"><img src="{% static 'images/짱구.jpg' %}" alt="짱구"></div>
-                            <div>
-                            <li>구매자: {{ est.buyer_id.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
-                            <li>제품명: {{ est.project_name }}</li><br>
-                            <li>희망 재료: {{ est.material }}</li><br>
-                            <li>제작 방식: {{ est.method }}</li><br>
-                            <li>요청 사항: {{ est.detail }}</li>
-                            </div>
-                        </ul>
-                    </button></a>
-                    {% endfor %}
-                {% else %}
-                    <p>No estimates are available.</p>
-                {% endif %}
+        <h1 id="Head">입찰가능품목</h1>
+        <br><br>   
+            {% if estimates %}
+                {% for est in estimates %}
+                <a href="page_29.html"><button id="LeftItem">
+                    <ul style="float: center; list-style:none">
+                        <div style="float: left"><img src="{% static 'images/짱구.jpg' %}" alt="짱구"></div>
+                        <div>
+                        <li>구매자: {{ est.buyer_id.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
+                        <li>제품명: {{ est.project_name }}</li><br>
+                        <li>희망 재료: {{ est.material }}</li><br>
+                        <li>제작 방식: {{ est.method }}</li><br>
+                        <li>요청 사항: {{ est.detail }}</li>
+                        </div>
+                    </ul>
+                </button></a>
+                {% endfor %}
+            {% else %}
+                <p>No estimates are available.</p>
+            {% endif %}
     </div>
     <div id="Center">
-        <h1 id="Head">경매중</h1>
+        <h1 id="Head">입찰중</h1>
         <br><br>
         <button id="CenterItem">
             <div style="float: left"><img src="{% static 'images/cheolsoo.jpg' %}" alt="철수"></div>
@@ -68,7 +62,7 @@
         </button>
     </div> 
     <div id="Right">
-        <h1 id="Head">작업중</h1>
+        <h1 id="Head">낙찰받은품목</h1>
         <br><br>
         <button id="RightItem">
             <div style="float: left"><img src="{% static 'images/초코비 버즈 케이스.jpg' %}" alt="초코비 버즈 케이스"></div>
