@@ -1,0 +1,10 @@
+{% if estimate %}
+    <ul>
+    {% for estimate in estimate %}
+        <li><a>{{ estimate.pieces }}</a>
+            <a>{{ estimate.project_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}

@@ -15,8 +15,11 @@
             <span class="fs-4">거래가 완료되었습니다.</span>
           </a>
         </header>
-        
-        <p style="color: gray; text-align: right;">결제일 : 22.10.16 22:43</p>
+        {% if bid %}
+          {% for bid in bid %}
+            <p style="color: gray; text-align: right;">결제일 : {{ bid.bid_date }}</p>
+          {% endfor %}
+        {% endif %}
 
         <div class="row">
             <div class="col">
@@ -29,11 +32,15 @@
                 </div>
 
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="mb">짱구</h3>
-                    <p class="mb-auto">수량: 1개</p>
-                    <p class="mb-auto">재료: 필라멘트</p>
-                    <p class="mb-auto">방식: FDM</p>
-                    <p class="mb-auto">요청사항: 마감, 도색</p>
+                    {% if estimate %}
+                      {% for estimate in estimate %}
+                        <h3 class="mb">{{ estimate.project_name }}</h3>
+                        <p class="mb-auto">수량: {{ estimate.pieces }}개</p>
+                        <p class="mb-auto">재료: {{ estimate.material }}</p>
+                        <p class="mb-auto">방식: {{ estimate.method }}</p>
+                        <p class="mb-auto">요청사항: {{ estimate.detail }}</p>
+                      {% endfor %}
+                    {% endif %}
                     <!-- <div class="mb-1">재료: 필라멘트</div> -->
                   <!-- <a href="#" class="stretched-link">Continue reading</a> -->
                 </div>
