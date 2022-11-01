@@ -3,7 +3,8 @@ from . import views
 
 app_name = 'sell'
 urlpatterns = [
-    path('seller/', views.EstimatesView.as_view(), name='seller_kanban'),
+    path('seller_kanban/', views.seller_kanban, name='seller_kanban'),
+    path('seller_kanban/<uuid:estimate_id>', views.estimate_detail, name='estimate_detail'),
     # ex: /polls/
     # path('', views.IndexView.as_view(), name='index'),
     # # ex: /polls/1/ , name이 detali.html에서 url 템플릿태그 써서 인식할 때 사용됨. url 바꾸려면 템플릿말고 여기서 바꾸면 됌.

@@ -2,5 +2,8 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-for model in [Equipment, Seller, EquipmentToSeller]:
+# 관리자 계정에서 모델들을 다룰 수 있게
+for model in [Equipment, Seller]:
     admin.site.register(model)
+
+
