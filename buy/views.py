@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.utils import timezone
@@ -7,6 +7,16 @@ from django.views import generic
 from django.db.models import Exists, Q
 from trade.models import Estimate
 from .forms import EstimateForm
+
+def index(request):
+    estimate_list = Estimate.objects.order_by('-reg_date')
+    context = {'estimate_list': estimate_list}
+    return render(request, 'buyer_estimate_list.html', context)
+
+def detail(request, estimate_id):
+    estimate = get_object_or_404(Estimate, pk=estimate_id)
+    context = {'estimate': estimate}
+    return render(request, 'temp_detail.html', context)
 
 def buyer_estimate_list(request):
     page = request.GET.get('page', '1')  # 페이지
