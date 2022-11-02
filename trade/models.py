@@ -15,18 +15,23 @@ class Estimate(models.Model):
     detail = models.TextField()
     drawing = models.FileField()
     reg_date = models.DateTimeField()
+
+    def __str__(self) -> str:
+        #return f"{self.estimate_id}"
+        return f"{self.project_name}"
 # 입찰
 class Bid(models.Model):
     bid_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     seller_id = models.ForeignKey(Seller, on_delete=models.CASCADE)
-    estimate_id = models.UUIDField()
+    estimate_id = models.ForeignKey(Estimate, on_delete=models.CASCADE)
     price = models.IntegerField()
     bid_date = models.DateTimeField()
     finished = models.BooleanField()
+
 # 거래
 class Trade(models.Model):
     trade_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    estimate_id = models.UUIDField(default=uuid.uuid4)
+    estimate_id = models.ForeignKey(Estimate, on_delete=models.CASCADE)
     bid_id = models.UUIDField(default=uuid.uuid4)
     success_date = models.DateTimeField()
     product_state = models.IntegerField()

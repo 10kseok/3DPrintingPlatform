@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>구매자 견적요청 상세</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Platform for 3D Print</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary">로그아웃</button>
+      <button type="button" class="btn btn-primary">내 정보</button>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">프로젝트 이름
+        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+      </li>
+      <li class="list-group-item">도안
+        <button type="button" class="btn btn-primary">파일등록</button>
+        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+      </li>
+      <li class="list-group-item">재료
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">PLA</a></li>
+            <li><a class="dropdown-item" href="#">ABS</a></li>
+            <li><a class="dropdown-item" href="#">PETG</a></li>
+            <li><a class="dropdown-item" href="#">TPU</a></li>
+            <li><a class="dropdown-item" href="#">ABS-Like</a></li>
+            <li><a class="dropdown-item" href="#">레진</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="list-group-item">출력방식
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">SLA</a></li>
+            <li><a class="dropdown-item" href="#">FDM</a></li>
+            <li><a class="dropdown-item" href="#">Polyjet</a></li>
+            <li><a class="dropdown-item" href="#">SLM/DMLS</a></li>
+            <li><a class="dropdown-item" href="#">MJF</a></li>
+            <li><a class="dropdown-item" href="#">SLS</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="list-group-item">수량
+        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+      </li>
+      <li class="list-group-item">후처리 여부<br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1">마감</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <label class="form-check-label" for="inlineCheckbox2">도색</label>
+        </div>
+      </li>
+    </ul>
+    <br><br>
+    <button class="btn btn-outline-primary" type="button">견적요청</button>
+  </body>
+</html>
