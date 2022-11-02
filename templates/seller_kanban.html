@@ -23,7 +23,7 @@
         <br><br>   
             {% if estimates %}
                 {% for est in estimates %}
-                <a href={% url 'sell:estimate_detail' est.pk %}><button id="LeftItem">
+                <a href={% url 'sell:estimate_detail' est.estimate_id %}><button id="LeftItem">
                     <ul style="float: center; list-style:none">
                         <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{est.drawing}}" alt="도면 미리보기"></div>
                         <div>

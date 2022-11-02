@@ -8,12 +8,12 @@ from trade.models import Estimate, Bid
 
 def seller_kanban(request):
     temp_seller_id = "bluedragon"
-
+    
     not_finished_bid = Bid.objects.filter(finished=True).values('estimate_id')
     estimates_before_bidding = Estimate.objects.filter(
         ~Q(estimate_id__in = [item['estimate_id'] for item in not_finished_bid])
         )
-    bidding = Bid.objects.filter(finished=False, seller_id=temp_seller_id)
+    bidding = Bid.objects.filter(finished=False)
     completed = Bid.objects.filter(finished=True)
     
     context = {

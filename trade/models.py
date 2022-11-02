@@ -7,7 +7,7 @@ from sell.models import Seller
 # 견적
 class Estimate(models.Model):
     estimate_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    #buyer_id = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    buyer_id = models.ForeignKey(Buyer, on_delete=models.CASCADE)
     project_name = models.CharField(max_length=200)
     material = models.CharField(max_length=15)
     method = models.CharField(max_length=15)
@@ -17,7 +17,7 @@ class Estimate(models.Model):
     reg_date = models.DateTimeField()
 
     def __str__(self) -> str:
-        #return f"{self.estimate_id}"
+        # return f"{self.estimate_id}"
         return f"{self.project_name}"
 # 입찰
 class Bid(models.Model):
