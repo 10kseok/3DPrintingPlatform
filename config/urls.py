@@ -20,4 +20,5 @@ urlpatterns = [
     path('buy/', include('buy.urls')),
     path('sell/', include('sell.urls')),
     path('admin/', admin.site.urls),
+    path('trade/', include('trade.urls')),
 ]

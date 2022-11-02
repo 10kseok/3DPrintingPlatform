@@ -7,8 +7,8 @@ from sell.models import Seller
 # 견적
 class Estimate(models.Model):
     estimate_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    buyer_id = models.ForeignKey(Buyer, on_delete=models.CASCADE)
-    project_name = models.CharField(max_length=30)
+    #buyer_id = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    project_name = models.CharField(max_length=200)
     material = models.CharField(max_length=15)
     method = models.CharField(max_length=15)
     pieces = models.IntegerField()
@@ -32,6 +32,6 @@ class Bid(models.Model):
 class Trade(models.Model):
     trade_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     estimate_id = models.ForeignKey(Estimate, on_delete=models.CASCADE)
-    bid_id = models.UUIDField(default=uuid.uuid4)
+    bid_id = models.ForeignKey(Bid, on_delete=models.CASCADE)
     success_date = models.DateTimeField()
     product_state = models.IntegerField()
