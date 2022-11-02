@@ -15,9 +15,11 @@
             <span class="fs-4">거래가 완료되었습니다.</span>
           </a>
         </header>
-        
-        <p style="color: gray; text-align: right;">결제일 : 22.10.16 22:43</p>
-
+        {% if trade %}
+          {% for trade in trade %}
+            <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
+          {% endfor %}
+        {% endif %}
         <div class="row">
             <div class="col">
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -29,11 +31,15 @@
                 </div>
 
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="mb">짱구</h3>
-                    <p class="mb-auto">수량: 1개</p>
-                    <p class="mb-auto">재료: 필라멘트</p>
-                    <p class="mb-auto">방식: FDM</p>
-                    <p class="mb-auto">요청사항: 마감, 도색</p>
+                  {% if estimate %}
+                    {% for estimate in estimate %}
+                      <h3 class="mb">{{ estimate.project_name }}</h3>
+                      <p class="mb-auto">수량: {{ estimate.pieces }}개</p>
+                      <p class="mb-auto">재료: {{ estimate.material }}</p>
+                      <p class="mb-auto">방식: {{ estimate.method }}</p>
+                      <p class="mb-auto">요청사항: {{ estimate.detail }}</p>
+                    {% endfor %}
+                  {% endif %}
                     <!-- <div class="mb-1">재료: 필라멘트</div> -->
                   <!-- <a href="#" class="stretched-link">Continue reading</a> -->
                 </div>
@@ -63,9 +69,13 @@
                 <h5>제품상태<span style="font-size: 12; color: red;"> * 아래 상태 중 하나를 클릭하면 고객이 상태를 확인할 수 있습니다.</span></h5>
                 <p>제작대기 -> <span style="font-size: large; font-weight: bold; color: rgb(47, 22, 234);">제작중</span> -> 배송대기 -> 배송중 -> 배송완료</p>
                 <div style="color: gray; text-align: right;" >
-                    <p>주문금액: 80,000원<br>
-                        할인금액: (-)0원<br>
-                    총 결제금액: 80,000원</p>
+                  {% if bid %}
+                    {% for bid in bid %}
+                    <p>주문금액: {{bid.price}}원<br>
+                      할인금액: (-)0원<br>
+                      총 결제금액: {{bid.price}}원</p>
+                    {% endfor %}
+                  {% endif %}
                         <!-- <button>거래취소요청</button> -->
                         <a href="#" class="btn btn-lg btn-secondary border-white bg-gray">거래취소요청</a>
                 </div>

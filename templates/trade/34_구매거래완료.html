@@ -15,12 +15,11 @@
             <span class="fs-4">거래가 완료되었습니다.</span>
           </a>
         </header>
-        {% if bid %}
-          {% for bid in bid %}
-            <p style="color: gray; text-align: right;">결제일 : {{ bid.bid_date }}</p>
+        {% if trade %}
+          {% for trade in trade %}
+            <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
           {% endfor %}
         {% endif %}
-
         <div class="row">
             <div class="col">
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -59,7 +58,11 @@
                 <div class="col p-4 d-flex flex-column position-static">
                     <p>주소: 경상남도 진주시 영천강로 119번길 37 <br>
                         연락처: 055-365-8765 <br>
-                        입찰가격: 80,000원 <br>
+                        {% if bid %}
+                          {% for bid in bid %}
+                            입찰가격: {{bid.price}}원 <br>
+                          {% endfor %}
+                        {% endif %}
                         대기작업수: 7 <br>
                         예상 작업완료일자: 22.10.21
                     </p>
@@ -73,9 +76,13 @@
                 <h6>제품상태</h6>
                 <p>제작대기 -> <span style="font-weight: bold; color: rgb(47, 22, 234);">제작중</span> -> 배송대기 -> 배송중 -> 배송완료</p>
                 <div style="color: gray; text-align: right;" >
-                    <p>주문금액: 80,000원<br>
-                        할인금액: (-)0원<br>
-                    총 결제금액: 80,000원</p>
+                  {% if bid %}
+                    {% for bid in bid %}
+                    <p>주문금액: {{bid.price}}원<br>
+                      할인금액: (-)0원<br>
+                      총 결제금액: {{bid.price}}원</p>
+                    {% endfor %}
+                  {% endif %}
                         <!-- <button>거래취소요청</button> -->
                         <a href="#" class="btn btn-lg btn-secondary border-white bg-gray">거래취소요청</a>
                 </div>
