@@ -73,8 +73,6 @@
 
             <div class="col-md-6">
               <div class="row g-0  overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                <h6>제품상태</h6>
-                <p>제작대기 -> <span style="font-weight: bold; color: rgb(47, 22, 234);">제작중</span> -> 배송대기 -> 배송중 -> 배송완료</p>
                 <div style="color: gray; text-align: right;" >
                   {% if bid %}
                     {% for bid in bid %}
@@ -83,8 +81,6 @@
                       총 결제금액: {{bid.price}}원</p>
                     {% endfor %}
                   {% endif %}
-                        <!-- <button>거래취소요청</button> -->
-                        <a href="#" class="btn btn-lg btn-secondary border-white bg-gray">거래취소요청</a>
                 </div>
               </div>
             </div>
