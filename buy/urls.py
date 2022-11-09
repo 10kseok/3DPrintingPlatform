@@ -8,6 +8,11 @@ urlpatterns = [
     path('2/', views.index2, name='index2'),
     path('detail/', views.estimate_detail, name='estimate_detail'),
     path('ing/', views.estimating, name='estimating'),
+    path('complete/', views.complete, name='complete'),
+    path('sign_up/', views.sign_up, name='sign_up'),
+    path('position_choice/', views.position_choice, name='position_choice'),
+    path('sign_in/', views.sign_in, name='sign_in'),
+    path('main/', views.main, name='main'),
 ] 
     
     #path('<uuid:estimate_id>/', views.detail, name='detail'),
