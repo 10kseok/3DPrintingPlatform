@@ -67,53 +67,59 @@
                         전화번호를 입력해주세요.
                     </div>
                 </div>
-
-                <div class="mb-3">
-                    <label for="address">가공방식(복수선택가능)*</label><br>
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck1">#SLA</label>
-                      
-                        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck2">#FDM</label>
-                      
-                        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck3">#Polyjet</label>
-
-                        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck4">#SLM/DMLS</label>
-
-                        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck5">#MJF</label>
-
-                        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck6">#SLS</label>
-                      </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address">보유재료(복수선택가능)*</label><br>
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck7">#PLA</label>
-                      
-                        <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck8">#ABS</label>
-                      
-                        <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck9">#PETG</label>
-
-                        <input type="checkbox" class="btn-check" id="btncheck10" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck10">#TPU</label>
-
-                        <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck11">#ABS-Like</label>
-
-                        <input type="checkbox" class="btn-check" id="btncheck12" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncheck12">#레진</label>
-                      </div>
-                </div>
-
+                <form method="post">
+                    <fieldset>
+                        <div id="pre_set">
+                            <div class="mb-3">
+                                <label for="address">가공방식*</label><br>
+                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="radio" class="btn-check" id="btncheck1" name="method" value="SLA" checked>
+                                    <label class="btn btn-outline-primary" for="btncheck1">SLA</label>
+                                  
+                                    <input type="radio" class="btn-check" id="btncheck2" name="method" value="PDM">
+                                    <label class="btn btn-outline-primary" for="btncheck2">PDM</label>
+                                  
+                                    <input type="radio" class="btn-check" id="btncheck3" name="method" value="Polyjet">
+                                    <label class="btn btn-outline-primary" for="btncheck3">Polyjet</label>
+            
+                                    <input type="radio" class="btn-check" id="btncheck4" name="method" value="SLM/DMLS">
+                                    <label class="btn btn-outline-primary" for="btncheck4">SLM/DMLS</label>
+            
+                                    <input type="radio" class="btn-check" id="btncheck5" name="method" value="MJF">
+                                    <label class="btn btn-outline-primary" for="btncheck5">MJF</label>
+            
+                                    <input type="radio" class="btn-check" id="btncheck6" name="method" value="SLS">
+                                    <label class="btn btn-outline-primary" for="btncheck6">SLS</label>
+                                  </div>
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="address">보유재료(복수선택)*</label><br>
+                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check" id="btncheck7" name="material" checked>
+                                    <label class="btn btn-outline-primary" for="btncheck7">#PLA</label>
+                                  
+                                    <input type="checkbox" class="btn-check" id="btncheck8" name="material">
+                                    <label class="btn btn-outline-primary" for="btncheck8">#ABS</label>
+                                  
+                                    <input type="checkbox" class="btn-check" id="btncheck9" name="material">
+                                    <label class="btn btn-outline-primary" for="btncheck9">#PETG</label>
+            
+                                    <input type="checkbox" class="btn-check" id="btncheck10" name="material">
+                                    <label class="btn btn-outline-primary" for="btncheck10">#TPU</label>
+            
+                                    <input type="checkbox" class="btn-check" id="btncheck11" name="material">
+                                    <label class="btn btn-outline-primary" for="btncheck11">#ABS-Like</label>
+            
+                                    <input type="checkbox" class="btn-check" id="btncheck12" name="material">
+                                    <label class="btn btn-outline-primary" for="btncheck12">#레진</label>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </fieldset>
+                    <div id="field"></div>
+                </form>
+                
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="aggrement" required>
@@ -126,18 +132,18 @@
     </div>
     <script>
         window.addEventListener('load', () => {
-          const forms = document.getElementsByClassName('validation-form');
-    
-          Array.prototype.filter.call(forms, (form) => {
-            form.addEventListener('submit', function (event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-    
-              form.classList.add('was-validated');
-            }, false);
-          });
+            const forms = document.getElementsByClassName('validation-form');
+            
+            Array.prototype.filter.call(forms, (form) => {
+                form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                }, false);
+                
+            });
         }, false);
     </script>
 </body>
