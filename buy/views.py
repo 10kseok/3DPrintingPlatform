@@ -8,17 +8,27 @@ from django.db.models import Exists, Q
 from trade.models import Estimate
 from .forms import EstimateForm
 
-# urls.py에서 name=index일 때(=주소/buy 일 때), index함수가 실행됩니다.
-def index(request):
+# urls.py에서 name='함수이름'일 때(=주소/buy/'' 일 때), 함수가 실행됩니다.
+# 버튼 연결과는 무관하게 url입력해서 들어가는 액션입니다.
+# p16 (buy/1/)
+def index1(request):
     estimate_list = Estimate.objects.order_by('-reg_date')
     context = {'estimate_list': estimate_list}
     return render(request, 'buyer/temp/16_구매견적요청메인(등록전).html', context)
-"""
-def estimating(request, estimate_id):
-    estimate = get_object_or_404(Estimate, pk=estimate_id)
-    context = {'estimate': estimate}
-    return render(request, 'buyer/temp/18_구매견적요청상세.html', context)
-"""
+#p19 (buy/2/)
+def index2(request):
+    estimate_list = Estimate.objects.order_by('-reg_date')
+    context = {'estimate_list': estimate_list}
+    return render(request, 'buyer/temp/19_구매견적요청메인(등록완료).html', context)
+# p18 (buy/ing/)
+def estimating(request):
+    return render(request, 'buyer/temp/18_구매견적요청상세.html')
+# p23 (buy/detail/)
+def estimate_detail(request):
+    return render(request, 'buyer/temp/23_구매입찰업체현황.html')
+    
+##################################################################\
+# 아래 함수들은 아직 사용되지 않습니다.
 def detail(request, estimate_id):
     estimate = get_object_or_404(Estimate, pk=estimate_id)
     context = {'estimate': estimate}

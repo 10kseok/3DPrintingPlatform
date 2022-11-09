@@ -1,118 +1,99 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>구매자 입찰업체 현황</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Platform for 3D Print</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <div class="border border-success p-2 mb-2">
-        <img src="assets/짱구.jpg" alt="짱구">짱구
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary" onclick="location.href='./05_메인(로그인전).html'">로그아웃</button>
-            <button type="button" class="btn btn-primary">내 정보</button>
-        </div>        
-    </div>
-    <div class="border border-success p-2 mb-2">입찰업체: 4개</div>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="assets/창원대학교.png" class="card-img-top" alt="창원대학교"> 
-            <div class="card-body">
-              <h5 class="card-title">창원대 신소재공학부 3D프린트 연구실</h5>
-              <p class="card-text">
-                <li>입찰 가격 : 80,000</li>
-                <li>대기 작업 수 : 7</li>
-                <li>예상 작업완료일자 : 10. 15</li>
-                <li>평점 : 4.2 / 5.0</li>
-              </p>
-              <button>입찰확인</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="assets/Anonymous.png" class="card-img-top" alt="Anonymous">
-            <div class="card-body">
-              <h5 class="card-title">피규어제작 싸게 해드려요</h5>
-              <p class="card-text">
-                <li>입찰 가격 : 70,000</li>
-                <li>대기 작업 수 : 0</li>
-                <li>예상 작업완료일자 : 10. 7</li>
-                <li>평점 : 3.8 / 5.0</li>
-              </p>
-              <button>입찰확인</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="assets/개.png" class="card-img-top" alt="개">
-            <div class="card-body">
-              <h5 class="card-title">프린트 연습용 싸게 해드립니다</h5>
-              <p class="card-text">
-                <li>입찰 가격 : 50,000</li>
-                <li>대기 작업 수 : 1</li>
-                <li>예상 작업완료일자 : 10.6</li>
-                <li>평점 : 3.2 / 5.0</li>
-              </p>
-              <button>입찰확인</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
-            <div class="card-body">
-              <h5 class="card-title">한양3D팩토리</h5>
-              <p class="card-text">
-                <li>입찰 가격 : 91,000</li>
-                <li>대기 작업 수 : 14</li>
-                <li>예상 작업완료일자 : 10. 11</li>
-                <li>평점 : 4.5 / 5.0</li>
-              </p>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>             
-            </div>
-          </div>
-        </div>
-        
-        
-        <!-- page_24~25 -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">한양3D팩토리</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
-                    <li>평점 : 4.2 / 5.0</li>
-                    <li>주소 : 경남 창원시 의창구</li>
-                    <li>전화번호 : 055-213-3690</li>
-                    <li>사용기기 : 큐비콘 스타일 플러스 3D 프린터</li>
-                    <li>판매자 소개 : 창원대학교 신소재공학부 3D프린트 연구실 입니다.</li>
-                    <br>
-                    <label>제작이력</label>
-                    <li>...</li>
-                    <li>...</li>
-                    <br>                    
-                    <label>후기&평점</label>
-                    <li>* 제작기간이 짧아요 (4.5/5)</li>
-                    <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
-                </div>
-                <div class="modal-footer">
-                <label>가격: 91000원</label>
-                <button type="button" class="btn btn-primary" onclick="location.href='../trade/34_구매거래완료.html'">판매자 선택</button>
-                </div>
-            </div>
-            </div>
-        </div>
-
-
+{% extends 'base.html' %}
+{% block content %}
+<div class="border border-success p-2 mb-2">입찰업체: 4개</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="assets/창원대학교.png" class="card-img-top" alt="창원대학교"> 
+      <div class="card-body">
+        <h5 class="card-title">창원대 신소재공학부 3D프린트 연구실</h5>
+        <p class="card-text">
+          <li>입찰 가격 : 80,000</li>
+          <li>대기 작업 수 : 7</li>
+          <li>예상 작업완료일자 : 10. 15</li>
+          <li>평점 : 4.2 / 5.0</li>
+        </p>
+        <button>입찰확인</button>
       </div>
-  </body>
-</html>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="assets/Anonymous.png" class="card-img-top" alt="Anonymous">
+      <div class="card-body">
+        <h5 class="card-title">피규어제작 싸게 해드려요</h5>
+        <p class="card-text">
+          <li>입찰 가격 : 70,000</li>
+          <li>대기 작업 수 : 0</li>
+          <li>예상 작업완료일자 : 10. 7</li>
+          <li>평점 : 3.8 / 5.0</li>
+        </p>
+        <button>입찰확인</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="assets/개.png" class="card-img-top" alt="개">
+      <div class="card-body">
+        <h5 class="card-title">프린트 연습용 싸게 해드립니다</h5>
+        <p class="card-text">
+          <li>입찰 가격 : 50,000</li>
+          <li>대기 작업 수 : 1</li>
+          <li>예상 작업완료일자 : 10.6</li>
+          <li>평점 : 3.2 / 5.0</li>
+        </p>
+        <button>입찰확인</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
+      <div class="card-body">
+        <h5 class="card-title">한양3D팩토리</h5>
+        <p class="card-text">
+          <li>입찰 가격 : 91,000</li>
+          <li>대기 작업 수 : 14</li>
+          <li>예상 작업완료일자 : 10. 11</li>
+          <li>평점 : 4.5 / 5.0</li>
+        </p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>             
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- page_24~25 -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">한양3D팩토리</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
+              <li>평점 : 4.2 / 5.0</li>
+              <li>주소 : 경남 창원시 의창구</li>
+              <li>전화번호 : 055-213-3690</li>
+              <li>사용기기 : 큐비콘 스타일 플러스 3D 프린터</li>
+              <li>판매자 소개 : 창원대학교 신소재공학부 3D프린트 연구실 입니다.</li>
+              <br>
+              <label>제작이력</label>
+              <li>...</li>
+              <li>...</li>
+              <br>                    
+              <label>후기&평점</label>
+              <li>* 제작기간이 짧아요 (4.5/5)</li>
+              <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
+          </div>
+          <div class="modal-footer">
+          <label>가격: 91000원</label>
+          <button type="button" class="btn btn-primary" onclick="location.href='../trade/34_구매거래완료.html'">판매자 선택</button>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
