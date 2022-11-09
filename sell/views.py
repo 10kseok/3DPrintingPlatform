@@ -26,10 +26,6 @@ def seller_kanban(request):
 def estimate_detail(request, estimate_id):
     return render(request, "../templates/bid_estimate_detail.html")
 
-# p35 (sell/complete/)
-def complete(request):
-    return render(request, 'trade/temp/35_판매거래완료.html')
-
 # p28 (sell/kanban/)
 def kanban(request):
     return render(request, 'seller/temp/seller_kanban.html')
