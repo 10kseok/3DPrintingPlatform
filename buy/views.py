@@ -26,6 +26,26 @@ def estimating(request):
 # p23 (buy/detail/)
 def estimate_detail(request):
     return render(request, 'buyer/temp/23_구매입찰업체현황.html')
+
+# p34 (buy/complete/)
+def complete(request):
+    return render(request, '../templates/trade/temp/34_구매거래완료.html')
+
+# p13 (buy/sign_up/)
+def sign_up(request):
+    return render(request, 'common/temp/13_회원가입(의뢰인).html')
+
+# p12 (buy/position_choice/)
+def position_choice(request):
+    return render(request, 'common/temp/12_회원가입(포지션선택).html')
+
+# p07 (buy/sign_in/)
+def sign_in(request):
+    return render(request, 'common/temp/07_로그인.html')
+
+# p05 (buy/main/)
+def main(request):
+    return render(request, 'common/temp/05_메인(로그인전).html')
     
 ##################################################################\
 # 아래 함수들은 아직 사용되지 않습니다.

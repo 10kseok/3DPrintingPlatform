@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입_생산자</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <h1>Platform for 3D Print</h1>
+{% extends 'base.html' %}
+{% block content %}
     <div class="container">
         <div class="input-form col-md-12 mx-auto">
             <h4 class="mb-3">
@@ -40,7 +30,7 @@
 
                 <div class="mb-3">
                     <label for="email">비밀번호*</label>
-                    <input type="email" class="form-control" id="email" placeholder="비밀번호를 입력해주세요.(6자리 이상)" required>
+                    <input type="email" class="form-control" id="email" placeholder="비밀번호를 입력해주세요.(6자리 이상)" required><br>
                     <input type="email" class="form-control" id="email" placeholder="비밀번호를 한번 더 입력해주세요." required>
                     <div class="invalid-feedback">
                         비밀번호를 입력해주세요.
@@ -117,19 +107,13 @@
                             </div><br><br>
                         </div>
                     </fieldset>
-                    <div id="field"></div>
+                    <div id="field"></div>                    
                 </form>
-                
-                <hr class="mb-4">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="aggrement" required>
-                    <label class="custom-control-label" for="aggrement">개인정보 수집/이용에 동의합니다.</label>
-                </div>
-                <div class="mb-4"></div>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">버튼만 누르면 가입 완료!</button>
             </form>
         </div>
     </div>
+
     <script>
         window.addEventListener('load', () => {
             const forms = document.getElementsByClassName('validation-form');
@@ -146,5 +130,4 @@
             });
         }, false);
     </script>
-</body>
-</html>
+    {% endblock %}
