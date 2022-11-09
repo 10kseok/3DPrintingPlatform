@@ -5,6 +5,7 @@ app_name = 'buy'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    
     path('<uuid:estimate_id>/', views.detail, name='detail'),
     path('buyer_estimate_list/', views.buyer_estimate_list, name='buyer_estimate_list'),
     #path('buyer_estimate_list/<uuid:estimate_id>', views.buyer_estimate_detail, name='buyer_estimate_detail'),
