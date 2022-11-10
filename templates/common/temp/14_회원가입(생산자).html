@@ -8,12 +8,13 @@
                 </svg>
                 생산자로 가입 
             </h4>
-            <form class="validation-form">
-               
+            <form class="validation-form" method="post" action="{% url 'common:signup_seller' %}">
+                {% csrf_token %}
+                {% include "form_errors.html" %}
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="name">이름*</label>
-                        <input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요." value="" required>
+                        <label for="first_name">이름*</label>
+                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="이름을 입력해주세요." value="{{ form.first_name.value|default_if_none:'' }}" required>
                         <div class="invalid-feedback">
                         이름을 입력해주세요.
                         </div>
@@ -21,17 +22,17 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">아이디*</label>
-                    <input type="email" class="form-control" id="email" placeholder="아이디를 입력해주세요." required>
+                    <label for="username">아이디*</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="아이디를 입력해주세요." value="{{ form.username.value|default_if_none:'' }}" required>
                     <div class="invalid-feedback">
                         아이디를 입력해주세요.
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">비밀번호*</label>
-                    <input type="email" class="form-control" id="email" placeholder="비밀번호를 입력해주세요.(6자리 이상)" required><br>
-                    <input type="email" class="form-control" id="email" placeholder="비밀번호를 한번 더 입력해주세요." required>
+                    <label for="password1">비밀번호*</label>
+                    <input type="password" class="form-control" name="password1" id="password1" placeholder="비밀번호를 입력해주세요.(8자리 이상)" value="{{ form.password1.value|default_if_none:'' }}" required><br>
+                    <input type="password" class="form-control" name="password2" id="password2" placeholder="비밀번호를 한번 더 입력해주세요." value="{{ form.password2.value|default_if_none:'' }}" required>
                     <div class="invalid-feedback">
                         비밀번호를 입력해주세요.
                     </div>
@@ -39,77 +40,70 @@
 
                 <div class="mb-3">
                     <label for="address">주소*</label>
-                    <input type="text" class="form-control" id="address" placeholder="주소를 입력해주세요." required>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="주소를 입력해주세요." value="{{ form.address.value|default_if_none:'' }}"required>
                     <div class="invalid-feedback">
                         주소를 입력해주세요.
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="address2">상세주소</label>
-                    <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
-                </div>
-
-                <div class="mb-3">
-                    <label for="address">전화번호*</label>
-                    <input type="text" class="form-control" id="address" placeholder="전화번호를 입력해주세요.('-' 생략)" required>
+                    <label for="TEL">전화번호*</label>
+                    <input type="text" class="form-control" name="TEL" id="TEL" placeholder="전화번호를 입력해주세요.('-' 생략)" value="{{ form.TEL.value|default_if_none:'' }}" required>
                     <div class="invalid-feedback">
                         전화번호를 입력해주세요.
                     </div>
                 </div>
-                <form method="post">
-                    <fieldset>
-                        <div id="pre_set">
-                            <div class="mb-3">
-                                <label for="address">가공방식*</label><br>
-                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                    <input type="radio" class="btn-check" id="btncheck1" name="method" value="SLA" checked>
-                                    <label class="btn btn-outline-primary" for="btncheck1">SLA</label>
-                                  
-                                    <input type="radio" class="btn-check" id="btncheck2" name="method" value="PDM">
-                                    <label class="btn btn-outline-primary" for="btncheck2">PDM</label>
-                                  
-                                    <input type="radio" class="btn-check" id="btncheck3" name="method" value="Polyjet">
-                                    <label class="btn btn-outline-primary" for="btncheck3">Polyjet</label>
-            
-                                    <input type="radio" class="btn-check" id="btncheck4" name="method" value="SLM/DMLS">
-                                    <label class="btn btn-outline-primary" for="btncheck4">SLM/DMLS</label>
-            
-                                    <input type="radio" class="btn-check" id="btncheck5" name="method" value="MJF">
-                                    <label class="btn btn-outline-primary" for="btncheck5">MJF</label>
-            
-                                    <input type="radio" class="btn-check" id="btncheck6" name="method" value="SLS">
-                                    <label class="btn btn-outline-primary" for="btncheck6">SLS</label>
-                                  </div>
-                            </div>
-            
-                            <div class="mb-3">
-                                <label for="address">보유재료(복수선택)*</label><br>
-                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                    <input type="checkbox" class="btn-check" id="btncheck7" name="material" checked>
-                                    <label class="btn btn-outline-primary" for="btncheck7">#PLA</label>
-                                  
-                                    <input type="checkbox" class="btn-check" id="btncheck8" name="material">
-                                    <label class="btn btn-outline-primary" for="btncheck8">#ABS</label>
-                                  
-                                    <input type="checkbox" class="btn-check" id="btncheck9" name="material">
-                                    <label class="btn btn-outline-primary" for="btncheck9">#PETG</label>
-            
-                                    <input type="checkbox" class="btn-check" id="btncheck10" name="material">
-                                    <label class="btn btn-outline-primary" for="btncheck10">#TPU</label>
-            
-                                    <input type="checkbox" class="btn-check" id="btncheck11" name="material">
-                                    <label class="btn btn-outline-primary" for="btncheck11">#ABS-Like</label>
-            
-                                    <input type="checkbox" class="btn-check" id="btncheck12" name="material">
-                                    <label class="btn btn-outline-primary" for="btncheck12">#레진</label>
+                
+                <fieldset>
+                    <div id="pre_set">
+                        <div class="mb-3">
+                            <label for="method">가공방식*</label><br>
+                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                <input type="radio" class="btn-check" id="btncheck1" name="method" value="SLA" checked>
+                                <label class="btn btn-outline-primary" for="btncheck1">SLA</label>
+                                
+                                <input type="radio" class="btn-check" id="btncheck2" name="method" value="PDM">
+                                <label class="btn btn-outline-primary" for="btncheck2">PDM</label>
+                                
+                                <input type="radio" class="btn-check" id="btncheck3" name="method" value="Polyjet">
+                                <label class="btn btn-outline-primary" for="btncheck3">Polyjet</label>
+        
+                                <input type="radio" class="btn-check" id="btncheck4" name="method" value="SLM/DMLS">
+                                <label class="btn btn-outline-primary" for="btncheck4">SLM/DMLS</label>
+        
+                                <input type="radio" class="btn-check" id="btncheck5" name="method" value="MJF">
+                                <label class="btn btn-outline-primary" for="btncheck5">MJF</label>
+        
+                                <input type="radio" class="btn-check" id="btncheck6" name="method" value="SLS">
+                                <label class="btn btn-outline-primary" for="btncheck6">SLS</label>
                                 </div>
-                            </div><br><br>
                         </div>
-                    </fieldset>
-                    <div id="field"></div>                    
-                </form>
-                <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="location.href='/'">버튼만 누르면 가입 완료!</button>
+        
+                        <div class="mb-3">
+                            <label for="material">보유재료(복수선택)*</label><br>
+                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                <input type="checkbox" class="btn-check" id="btncheck7" name="materials[]" value="PLA" checked>
+                                <label class="btn btn-outline-primary" for="btncheck7">PLA</label>
+                                
+                                <input type="checkbox" class="btn-check" id="btncheck8" name="materials[]" value="ABS">
+                                <label class="btn btn-outline-primary" for="btncheck8">ABS</label>
+                                
+                                <input type="checkbox" class="btn-check" id="btncheck9" name="materials[]" value="PETG">
+                                <label class="btn btn-outline-primary" for="btncheck9">PETG</label>
+        
+                                <input type="checkbox" class="btn-check" id="btncheck10" name="materials[]" value="TPU">
+                                <label class="btn btn-outline-primary" for="btncheck10">TPU</label>
+        
+                                <input type="checkbox" class="btn-check" id="btncheck11" name="materials[]" value="ABS-Like">
+                                <label class="btn btn-outline-primary" for="btncheck11">ABS-Like</label>
+        
+                                <input type="checkbox" class="btn-check" id="btncheck12" name="materials[]" value="레진">
+                                <label class="btn btn-outline-primary" for="btncheck12">레진</label>
+                            </div>
+                        </div><br><br>
+                    </div>
+                </fieldset>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">버튼만 누르면 가입 완료!</button>
             </form>
         </div>
     </div>

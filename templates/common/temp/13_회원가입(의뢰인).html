@@ -13,8 +13,8 @@
                 {% csrf_token %}
                 {% include "form_errors.html" %}
                 <div class="mb-3">
-                    <label for="lastname">사용자 이름</label>
-                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="이름을 입력해주세요."
+                    <label for="first_name">사용자 이름</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="이름을 입력해주세요."
                            value="{{ form.lastname.value|default_if_none:'' }}">
                 </div>
                 <div class="mb-3">
