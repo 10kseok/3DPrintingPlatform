@@ -12,6 +12,7 @@ urlpatterns = [
     path('position_choice/', views.position_choice, name='position_choice'),
     path('sign_in/', views.sign_in, name='sign_in'),
     path('main/', views.main, name='main'),
+    path('', views.main, name='main'),
 ] 
     
     #path('<uuid:estimate_id>/', views.detail, name='detail'),
