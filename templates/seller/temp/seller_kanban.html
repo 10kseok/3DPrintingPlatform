@@ -1,8 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-
-<!DOCTYPE html>
+{% block content %}
 <head>
-    <title>제작자 경매품목 메인</title>
     <style type="text/css">
         #Left {float: left; width: 620px;}
         #Center {float: left; width: 620px;}
@@ -14,10 +13,7 @@
     </style>
 </head>
 <body>
-    <h1>3D Printing Manufacturing Platform</h1>
-    <button style="width: 100px; height:30px; font-size:20px; float:right;">로그아웃</button>
-    <button style="width: 100px; height:30px; font-size:20px; float:right;">내정보</button>
-    <br><br><br><br><br><br>
+
     <div id="Left">
         <h1 id="Head">입찰가능품목</h1>
         <br><br>   
@@ -92,4 +88,4 @@
         
     </div>
 </body>
-</html>
+{% endblock %}

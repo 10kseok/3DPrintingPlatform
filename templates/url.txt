@@ -1,0 +1,23 @@
+# buy
+buy/1/ --> p16
+buy/2/ --> p19
+buy/ing/ --> p18
+buy/detail/ --> p23
+buy/sign_up/ --> p13
+buy/position_choice/ --> p12
+buy/sign_in/ --> p07
+buy/main/ --> p05
+
+
+# common
+
+
+# sell
+sell/kanban/ --> p28
+sell/detail/ --> p29
+sell/sign_up/ --> p14
+
+
+# trade
+trade/buy/complete/ --> p34
+trade/sell/complete/ --> p35

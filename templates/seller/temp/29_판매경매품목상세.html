@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% block content %}
+		<div id="page-wrapper">
+            
+            <!-- Posts -->
+                <section class="wrapper style1">
+                    <div class="container">
+                        <section class="col-6 col-12-narrower">
+                            <div class="box post">
+                                <a href="#" class="image left"><img src="assets/shinchan.jpeg" alt="" style="width: 100%; height:auto;" /></a>
+                                <div class="inner">
+                                    <h3>짱구</h3>
+                                    <p>구매자 : 짱아</p>
+                                    <p>재료 : 필라멘트</p>
+                                    <p>제작방식 : FDM</p>
+                                    <p>요청사항 : 마감, 도색</p>
+                                    <p>도면파일 : 짱구.stl
+                                        <button>미리보기</button><!--어딘가로 연결되는 링크-->
+                                        <button>다운로드</button><!--어딘가로 연결되는 링크-->
+                                    </p>
+                                </div>    
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+				<section id="cta" class="wrapper style3">
+					<div class="container">
+						<header>
+                            <input type="number" name="price" id="price">
+							<a href="#" class="button">견적 입찰</a>
+						</header>
+					</div>
+				</section>
+
+        </div>
+
+    {% endblock %}

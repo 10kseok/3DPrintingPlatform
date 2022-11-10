@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main class="form-signin w-100 m-auto">
+    <form>
+      <div>
+          <label for="">아이디*</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="" required>
+      </div><br>
+      <div>
+          <label for="">비밀번호*</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" value="" required>
+      </div><br>
+      <div class="checkbox mb-3">
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button class="w-100 btn btn-lg btn-primary" type="submit" onclick=whatPosition()>로그인</button>
+          <button type="button" class="btn btn-outline-primary" onclick="location.href='http://127.0.0.1:8000/buy/sign_up/'">회원가입</button>
+      </div>
+    </form>
+  </main>
+{% endblock %}
+<script>
+  function whatPosition(){
+    window.location.href=''
+  }
+</script>

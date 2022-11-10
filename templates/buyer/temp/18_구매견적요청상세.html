@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<form>
+  <ul class="list-group">
+    <li class="list-group-item">프로젝트 이름
+      <input type="text" class="form-control" id="name" placeholder="프로젝트 이름을 입력하세요" value="" required>
+    </li>
+    <li class="list-group-item">도안
+      <input type="file" class="form-control" id="name" placeholder="" value="" required>
+    </li>
+    <li class="list-group-item">재료
+      <div class="dropdown">
+        <select name="재료">
+          <option value="PLA"><a class="dropdown-item" href="#">PLA</a></option>
+          <option value="ABS"><a class="dropdown-item" href="#">ABS</a></option>
+          <option value="PETG"><a class="dropdown-item" href="#">PETG</a></option>
+          <option value="TPU"><a class="dropdown-item" href="#">TPU</a></option>
+          <option value="ABS-LIKE"><a class="dropdown-item" href="#">ABS-LIKE</a></option>
+          <option value="RESIN"><a class="dropdown-item" href="#">RESIN</a></option>
+        </select>
+      </div>
+    </li>
+    <li class="list-group-item">출력방식
+      <div class="dropdown">
+        <select name="재료">
+          <option value="SLA"><a class="dropdown-item" href="#">SLA</a></option>
+          <option value="FDM"><a class="dropdown-item" href="#">FDM</a></option>
+          <option value="Polyjet"><a class="dropdown-item" href="#">Polyjet</a></option>
+          <option value="SLM/DMLS"><a class="dropdown-item" href="#">SLM/DMLS</a></option>
+          <option value="MJF"><a class="dropdown-item" href="#">MJF</a></option>
+          <option value="SLS"><a class="dropdown-item" href="#">SLS</a></option>
+        </select>
+      </div>
+    </li>
+    <li class="list-group-item">수량
+      <input type="text" class="form-control" id="name" placeholder="수량을 입력하세요" value="" required>
+    </li>
+    <li class="list-group-item">후처리 여부<br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">마감</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <label class="form-check-label" for="inlineCheckbox2">도색</label>
+      </div>
+    </li>
+  </ul>
+</form>
+<br>
+<br>
+<button class="btn btn-primary" type="submit" onclick="location.href='http://127.0.0.1:8000/buy/2/'">견적요청</button>
+{% endblock %}
