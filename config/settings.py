@@ -86,6 +86,11 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'common.User'
 
+# 로그인 성공후 이동하는 URL
+LOGIN_REDIRECT_URL = '/'
+# 로그아웃시 이동하는 URL
+LOGOUT_REDIRECT_URL = '/'
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
