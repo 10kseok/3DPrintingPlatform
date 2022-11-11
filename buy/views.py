@@ -69,16 +69,20 @@ def buyer_estimate_detail(request, estimate_id):
     return render(request, 'buyer_estimate_detail.html', context)
 
 
-def buyer_estimate_form(request):
+def register_estimate(request):
     if request.method == 'POST':
-        form = EstimateForm(request.POST)
+        form = EstimateForm(request.POST, request.FILES)
+        details = request.POST.getlist('detail')
+        details_for_DB = "/".join(details)
+
         if form.is_valid():
             estimate = form.save(commit=False)
-            #question.author = request.user  # author 속성에 로그인 계정 저장
             estimate.reg_date = timezone.now()
+            estimate.buyer_id = request.user
+            estimate.detail = details_for_DB
             estimate.save()
             #return redirect('buy:buyer_estimate_list')
-            return redirect('buyer/temp/16_구매견적요청메인(등록전).html')
+            return redirect('buy:index2')
     else:
         form = EstimateForm()
     context = {'form': form}

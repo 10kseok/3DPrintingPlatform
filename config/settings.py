@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-_x8ym!(kzioc(l+@v_hns1yo5^02w#v3s_rt^l2r(v-dfzkm0*
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000"]
 ALLOWED_HOSTS = []
 
 
@@ -129,6 +129,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# 서버로 upload하는 file은 MEDIA_ROOT에 저장이 되고, 요청할 때는 MEDIA_URL을 이용
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
