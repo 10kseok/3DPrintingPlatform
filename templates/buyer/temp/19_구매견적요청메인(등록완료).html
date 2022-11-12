@@ -2,7 +2,7 @@
 {% block content %}
 <div class="d-grid gap-2">
     {% for estimate in estimate_list %}
-    <button class="btn btn-outline-primary" type="button" onclick="location.href='http://127.0.0.1:8000/buy/detail/'">
+    <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url 'buy:estimate_detail' estimate.estimate_id %}'">
         <div style="float: left"><img style="width: 100px; height: 100px" src="{{ estimate.drawing.url }}" alt="도면 미리보기"></div>
         <ul>제품명: {{ estimate.project_name }}</ul>
         <ul>수량: {{ estimate.pieces }}개</ul>

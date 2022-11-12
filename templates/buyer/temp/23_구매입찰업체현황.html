@@ -3,12 +3,31 @@
 {% block content %}
 <div class="border border-success p-2 mb-2"><img src="images/짱구.jpg" alt="짱구"> 입찰업체: 4개</div>
 <div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for bid in bids %}
+  <div class="col">
+    <div class="card">
+      <img src="assets/창원대학교.png" class="card-img-top" alt="판매자 이미지"> 
+      <div class="card-body">
+        <h5 class="card-title">{{ bid.seller_id.username }}</h5>
+        <p class="card-text">
+          
+          <li>입찰 가격 : {{ bid.price }}원</li>
+          {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
+    
+        </p>
+        <button type="button" class="btn btn-primary">입찰확인</button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
   <div class="col">
     <div class="card">
       <img src="assets/창원대학교.png" class="card-img-top" alt="창원대학교"> 
       <div class="card-body">
         <h5 class="card-title">창원대 신소재공학부 3D프린트 연구실</h5>
         <p class="card-text">
+          
           <li>입찰 가격 : 80,000</li>
           <li>대기 작업 수 : 7</li>
           <li>예상 작업완료일자 : 10. 15</li>
@@ -18,6 +37,7 @@
       </div>
     </div>
   </div>
+  
   <div class="col">
     <div class="card">
       <img src="assets/Anonymous.png" class="card-img-top" alt="Anonymous">

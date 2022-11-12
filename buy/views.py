@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from django.views import generic
 from django.db.models import Exists, Q
-from trade.models import Estimate
+from trade.models import Estimate, Bid
 from .forms import EstimateForm
 
 # urls.py에서 name='함수이름'일 때(=주소/buy/'' 일 때), 함수가 실행됩니다.
@@ -47,13 +47,7 @@ def sign_in(request):
 def main(request):
     return render(request, 'common/temp/05_메인(로그인전).html')
     
-##################################################################\
-
-def detail(request, estimate_id):
-    estimate = get_object_or_404(Estimate, pk=estimate_id)
-    context = {'estimate': estimate}
-    return render(request, 'temp_detail.html', context)
-
+##################################################################
 def buyer_estimate_list(request):
     page = request.GET.get('page', '1')  # 페이지
     estimate_list = Estimate.objects.filter(buyer_id= request.user).order_by('-reg_date')
@@ -64,9 +58,9 @@ def buyer_estimate_list(request):
 
 
 def buyer_estimate_detail(request, estimate_id):
-    estimate = get_object_or_404(Estimate, pk=estimate_id)
-    context = {'estimate': estimate}
-    return render(request, 'buyer_estimate_detail.html', context)
+    bid = Bid.objects.filter(estimate_id= estimate_id)
+    context = {'bids': bid}
+    return render(request, 'buyer/temp/23_구매입찰업체현황.html', context)
 
 
 def register_estimate(request):
