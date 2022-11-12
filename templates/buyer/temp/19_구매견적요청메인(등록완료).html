@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="d-grid gap-2">
+    {% for estimate in estimate_list %}
     <button class="btn btn-outline-primary" type="button" onclick="location.href='http://127.0.0.1:8000/buy/detail/'">
-        <div style="float: left"><img src="assets/짱구.jpg" alt="짱구"></div>
-        <ul>제품명: 짱구</ul>
-        <ul>수량: 1개</ul>
-        <ul>재료: PLA</ul>
-        <ul>방식: FDM</ul>
-        <ul>요청사항: 마감, 도색</ul>
+        <div style="float: left"><img style="width: 100px; height: 100px" src="{{ estimate.drawing.url }}" alt="도면 미리보기"></div>
+        <ul>제품명: {{ estimate.project_name }}</ul>
+        <ul>수량: {{ estimate.pieces }}개</ul>
+        <ul>재료: {{ estimate.material }}</ul>
+        <ul>방식: {{ estimate.method }}</ul>
+        <ul>요청사항: {{ estimate.detail }}</ul>
     </button>
-    <button class="btn btn-outline-primary" type="button" onclick="location.href='http://127.0.0.1:8000/buy/ing/'">
+    {% endfor %}
+    <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url 'buy:register_estimate' %}'">
         <br>
         +
         <br>
@@ -18,7 +20,7 @@
     </button>
 </div>
 <div style="position: fixed; bottom:20px; right:20px;">
-    <button class="btn btn-primary" type="button" onclick="location.href='http://127.0.0.1:8000/buy/ing/'">
+    <button class="btn btn-primary" type="button" onclick="location.href='{% url 'buy:register_estimate' %}'">
         +
         <br>
         구매 등록

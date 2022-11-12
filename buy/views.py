@@ -48,7 +48,7 @@ def main(request):
     return render(request, 'common/temp/05_메인(로그인전).html')
     
 ##################################################################\
-# 아래 함수들은 아직 사용되지 않습니다.
+
 def detail(request, estimate_id):
     estimate = get_object_or_404(Estimate, pk=estimate_id)
     context = {'estimate': estimate}
@@ -56,11 +56,11 @@ def detail(request, estimate_id):
 
 def buyer_estimate_list(request):
     page = request.GET.get('page', '1')  # 페이지
-    estimate_list = Estimate.objects.order_by('-reg_date')
+    estimate_list = Estimate.objects.filter(buyer_id= request.user).order_by('-reg_date')
     paginator = Paginator(estimate_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
     context = {'estimate_list': page_obj}
-    return render(request, 'buyer_estimate_list.html', context)
+    return render(request, 'buyer/temp/19_구매견적요청메인(등록완료).html', context)
 
 
 def buyer_estimate_detail(request, estimate_id):
