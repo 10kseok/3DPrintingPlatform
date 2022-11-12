@@ -15,8 +15,8 @@
           {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
     
         </p>
-        <button type="button" class="btn btn-primary">입찰확인</button>
-      </div>
+        <button name="accept_bid" type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' bid.bid_id %}'">입찰확인</button>
+    </div>
     </div>
   </div>
   {% endfor %}
