@@ -17,6 +17,7 @@ def buy_complete(request, bid_id):
         product_state= "PROCESSING"
     )
     # NOTE: 실제 상세보기에서 판매자 선택버튼이 다 구현되면 주석해제
+    # bid.save()
     # trade.save()
     estimate = Estimate.objects.get(pk= bid.estimate_id.pk)
     seller_info = User.objects.get(username= bid.seller_id) 
@@ -29,6 +30,5 @@ def buy_complete(request, bid_id):
                 }
             )
     
-
 def sell_complete(request):
     return render(request, 'trade/temp/35_판매거래완료.html')

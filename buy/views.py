@@ -79,6 +79,4 @@ def register_estimate(request):
             return redirect('buy:index2')
     else:
         form = EstimateForm()
-    context = {'form': form}
-    #return render(request, 'buy:buyer_estimate_form.html', context)
-    return render(request, 'buyer/temp/18_구매견적요청상세.html', context)
+    return render(request, 'buyer/temp/18_구매견적요청상세.html', { 'form': form })

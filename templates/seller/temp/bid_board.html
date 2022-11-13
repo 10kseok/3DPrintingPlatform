@@ -23,7 +23,7 @@
                     <ul style="float: center; list-style:none">
                         <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{est.drawing}}" alt="도면 미리보기"></div>
                         <div>
-                        <li>구매자: {{ est.buyer_id.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
+                        <li>구매자: {{ est.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
                         <li>제품명: {{ est.project_name }}</li><br>
                         <li>희망 재료: {{ est.material }}</li><br>
                         <li>제작 방식: {{ est.method }}</li><br>
@@ -46,7 +46,7 @@
                 <ul style="float: center; list-style:none">
                     <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{b.estimate_id.drawing}}" alt="도면 미리보기"></div>
                     <div>
-                    <li>구매자: {{ b.estimate_id.buyer_id.buyer_id }}</li><br>
+                    <li>구매자: {{ b.estimate_id.buyer_id }}</li><br>
                     <li>제품명: {{ b.estimate_id.project_name }}</li><br>
                     <li>희망 재료: {{ b.estimate_id.material }}</li><br>
                     <li>제작 방식: {{ b.estimate_id.method }}</li><br>

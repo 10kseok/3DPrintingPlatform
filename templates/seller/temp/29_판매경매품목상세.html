@@ -10,12 +10,12 @@
                             <div class="box post">
                                 <a href="#" class="image left"><img src="assets/shinchan.jpeg" alt="" style="width: 100%; height:auto;" /></a>
                                 <div class="inner">
-                                    <h3>짱구</h3>
-                                    <p>구매자 : 짱아</p>
-                                    <p>재료 : 필라멘트</p>
-                                    <p>제작방식 : FDM</p>
-                                    <p>요청사항 : 마감, 도색</p>
-                                    <p>도면파일 : 짱구.stl
+                                    <h3>{{ estimate.project_name }}</h3>
+                                    <p>구매자 : {{ estimate.buyer_id}}</p>
+                                    <p>재료 : {{ estimate.material }}</p>
+                                    <p>제작방식 : {{ estimate.method }}</p>
+                                    <p>요청사항 : {{ estimate.detail }}</p>
+                                    <p>도면파일 : {{ estimate.drawing }}
                                         <button>미리보기</button><!--어딘가로 연결되는 링크-->
                                         <button>다운로드</button><!--어딘가로 연결되는 링크-->
                                     </p>
@@ -29,12 +29,18 @@
 				<section id="cta" class="wrapper style3">
 					<div class="container">
 						<header>
-                            <input type="number" name="price" id="price">
-							<a href="#" class="button">견적 입찰</a>
+                            <form method='post'>
+                                {% csrf_token %}
+                                <input type="number" name="price" id="price">
+                                <button type="submit">견적 입찰</button>
+                                {% comment %}
+                                    TODO
+                                    1.견적입찰 누르면 입찰완료창 팝업
+                                    2.팝업 확인시 다시 board로 돌아가게
+                                {% endcomment %}
+                            </form>
 						</header>
 					</div>
 				</section>
-
         </div>
-
-    {% endblock %}
+{% endblock %}
