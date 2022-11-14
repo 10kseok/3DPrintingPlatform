@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="border border-success p-2 mb-2"><img src="images/짱구.jpg" alt="짱구"> 입찰업체: 4개</div>
+<div class="border border-success p-2 mb-2"><img src="images/짱구.jpg" alt="짱구"> 입찰업체: {{bid_count}}개 </div>
 <div class="row row-cols-1 row-cols-md-2 g-4">
   {% for bid in bids %}
   {% comment %} seller info thumnail {% endcomment %}
