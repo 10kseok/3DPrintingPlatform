@@ -15,7 +15,7 @@
     <br>
     <br>
     <br>
-    <button type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/buy/sign_in/'">로그인</button>
-    <button type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/buy/sign_up/'">회원가입</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'common:login' %}'">로그인</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'common:signup' %}'">회원가입</button>
   </div>
 {% endblock %}
