@@ -18,23 +18,12 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">견적요청</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">입찰현황</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">포지션 전환</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">네비바 요소들은 포지션에 따라 바뀔 것 같습니다.</a>
-                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+                        <a class="nav-link" href="{% url '' %}">{{ user.username }}</a>
+                        <a class="nav-link" href="{% url 'common:logout' %}">(로그아웃)</a>
                     {% else %}
                         <a class="nav-link" href={% url 'common:login' %}>Sign in</a>
                     {% endif %}
@@ -55,10 +44,6 @@
     <footer class="py-5 bg-light mt-auto">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">견적요청</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">입찰현황</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">포지션 전환</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">네비바 요소들은 포지션에 따라 바뀔 것 같습니다.</a></li>
         </ul>
         <p class="text-center text-muted">© 2022 Platform for 3D Print</p>
     </footer>
