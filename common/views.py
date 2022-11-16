@@ -8,6 +8,17 @@ from sell.models import Equipment
 def index(request):
     return render(request, '../templates/common/temp/05_메인(로그인전).html')
 
+def mypage(request):
+    if request.user.flag == "SELLER":
+        user = request.user
+        equipment = Equipment.objects.get(pk=user.equipment_id1) 
+        method = equipment.method
+        materials = equipment.material.split('/')
+    return render(request, 'common/temp/마이페이지.html', {
+                                                        'method': method,
+                                                        'materials': materials
+                                                        })
+
 def signup(request):
     return render(request, '../templates/common/temp/12_회원가입(포지션선택).html')
 
@@ -38,7 +49,7 @@ def signup_seller(request):
         default_form = SignupForm(request.POST)
 
         if default_form.is_valid():
-            equipment = Equipment(method= method, material= materials_for_DB)
+            equipment = Equipment(method=method, material=materials_for_DB)
             equipment.save()
             user = default_form.save(commit=False)
             user.equipment_id1 = equipment.pk
