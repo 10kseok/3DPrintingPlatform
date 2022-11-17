@@ -1,23 +1,24 @@
 # buy
-buy/1/ --> p16
-buy/2/ --> p19
-buy/ing/ --> p18
-buy/detail/ --> p23
-buy/sign_up/ --> p13
-buy/position_choice/ --> p12
-buy/sign_in/ --> p07
-buy/main/ --> p05
+buy/ --> 완전메인
+buy/register/ --> 견적등록
+buy/estimates/ --> 의뢰인메인, 견적목록
+buy/estimates/<uuid:estimate_id>/ --> 견적상세(구매자시점)
 
 
 # common
+common/login/ --> 메인페이지
+common/logout/ --> 메인페이지
+common/signup/buyer/ --> 의뢰인 회원가입페이지
+common/signup/seller/ --> 생산자 회원가입페이지
+common/signup/ --> 의뢰인 생산자 회원가입 선택페이지
+common/mypage/ --> 마이페이지
 
 
 # sell
-sell/kanban/ --> p28
-sell/detail/ --> p29
-sell/sign_up/ --> p14
+sell/bid_board/ --> 생산자메인
+sell/bid_board/<uuid:estimate_id>/ --> 견적상세(생산자시점)
 
 
 # trade
-trade/buy/complete/ --> p34
-trade/sell/complete/ --> p35
+trade/buy/complete/<uuid:bid_id>/ --> 구매완료(의뢰인시점)
+trade/sell/complete/ --> 구매완료(생산자시점)
