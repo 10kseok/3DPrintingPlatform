@@ -1,14 +1,18 @@
-
+<style>
+    #page {
+        margin: auto;
+    }
+</style>
 {% extends 'base.html' %}
 {% block content %}
-		<div id="page-wrapper">
+		<div id="page">
             
             <!-- Posts -->
                 <section class="wrapper style1">
                     <div class="container">
                         <section class="col-6 col-12-narrower">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="assets/shinchan.jpeg" alt="" style="width: 100%; height:auto;" /></a>
+                                <a href="#" class="image left"><img src="assets/shinchan.jpeg" alt="" style="width: 200px;" /></a>
                                 <div class="inner">
                                     <h3>{{ estimate.project_name }}</h3>
                                     <p>구매자 : {{ estimate.buyer_id}}</p>
