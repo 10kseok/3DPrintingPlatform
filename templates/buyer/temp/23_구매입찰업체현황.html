@@ -1,121 +1,130 @@
+<style>
+  #form {
+    margin: 15px;
+  }
+  li {
+    list-style: none;
+  }
+</style>
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="border border-success p-2 mb-2"><img src="images/짱구.jpg" alt="짱구"> 입찰업체: {{bid_count}}개 </div>
-<div class="row row-cols-1 row-cols-md-2 g-4">
-  {% for bid in bids %}
-  {% comment %} seller info thumnail {% endcomment %}
-  <div class="col">
-    <div class="card">
-      <img src="assets/창원대학교.png" class="card-img-top" alt="판매자 이미지"> 
-      <div class="card-body">
-        <h5 class="card-title">{{ bid.seller_id.username }}</h5>
-        <p class="card-text">
-          
-          <li>입찰 가격 : {{ bid.price }}원</li>
-          {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
-    
-        </p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>
-    </div>
-    </div>
-  </div>
-
-  {% comment %} detail modal {% endcomment %}
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">한양3D팩토리</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
-            <li>평점 : 4.2 / 5.0</li>
-            <li>주소 : 경남 창원시 의창구</li>
-            <li>전화번호 : 055-213-3690</li>
-            <li>사용기기 : 큐비콘 스타일 플러스 3D 프린터</li>
-            <li>판매자 소개 : 창원대학교 신소재공학부 3D프린트 연구실 입니다.</li>
-            <br>
-            <label>제작이력</label>
-            <li>...</li>
-            <li>...</li>
-            <br>                    
-            <label>후기&평점</label>
-            <li>* 제작기간이 짧아요 (4.5/5)</li>
-            <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
-        </div>
-        <div class="modal-footer">
-        <label>가격: 91000원</label>
-        <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' bid.bid_id %}'">판매자 선택</button>
-        </div>
-    </div>
-    </div>
-</div>
-{% endfor %}
-
-  <div class="col">
-    <div class="card">
-      <img src="assets/창원대학교.png" class="card-img-top" alt="창원대학교"> 
-      <div class="card-body">
-        <h5 class="card-title">창원대 신소재공학부 3D프린트 연구실</h5>
-        <p class="card-text">
-          
-          <li>입찰 가격 : 80,000</li>
-          <li>대기 작업 수 : 7</li>
-          <li>예상 작업완료일자 : 10. 15</li>
-          <li>평점 : 4.2 / 5.0</li>
-        </p>
-        <button>입찰확인</button>
+<div id="form">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for bid in bids %}
+    {% comment %} seller info thumnail {% endcomment %}
+    <div class="col">
+      <div class="card">
+        <img src="assets/창원대학교.png" class="card-img-top" alt="판매자 이미지"> 
+        <div class="card-body">
+          <h5 class="card-title">{{ bid.seller_id.username }}</h5>
+          <p class="card-text">
+            
+            <li>입찰 가격 : {{ bid.price }}원</li>
+            {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
+      
+          </p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>
+      </div>
       </div>
     </div>
-  </div>
   
-  <div class="col">
-    <div class="card">
-      <img src="assets/Anonymous.png" class="card-img-top" alt="Anonymous">
-      <div class="card-body">
-        <h5 class="card-title">피규어제작 싸게 해드려요</h5>
-        <p class="card-text">
-          <li>입찰 가격 : 70,000</li>
-          <li>대기 작업 수 : 0</li>
-          <li>예상 작업완료일자 : 10. 7</li>
-          <li>평점 : 3.8 / 5.0</li>
-        </p>
-        <button>입찰확인</button>
+    {% comment %} detail modal {% endcomment %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">한양3D팩토리</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
+              <li>평점 : 4.2 / 5.0</li>
+              <li>주소 : 경남 창원시 의창구</li>
+              <li>전화번호 : 055-213-3690</li>
+              <li>사용기기 : 큐비콘 스타일 플러스 3D 프린터</li>
+              <li>판매자 소개 : 창원대학교 신소재공학부 3D프린트 연구실 입니다.</li>
+              <br>
+              <label>제작이력</label>
+              <li>...</li>
+              <li>...</li>
+              <br>                    
+              <label>후기&평점</label>
+              <li>* 제작기간이 짧아요 (4.5/5)</li>
+              <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
+          </div>
+          <div class="modal-footer">
+          <label>가격: 91000원</label>
+          <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' bid.bid_id %}'">판매자 선택</button>
+          </div>
+      </div>
+      </div>
+  </div>
+  {% endfor %}
+  
+    <div class="col">
+      <div class="card">
+        <img src="assets/창원대학교.png" class="card-img-top" alt="창원대학교"> 
+        <div class="card-body">
+          <h5 class="card-title">창원대 신소재공학부 3D프린트 연구실</h5>
+          <p class="card-text">
+            
+            <li>입찰 가격 : 80,000</li>
+            <li>대기 작업 수 : 7</li>
+            <li>예상 작업완료일자 : 10. 15</li>
+            <li>평점 : 4.2 / 5.0</li>
+          </p>
+          <button>입찰확인</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="assets/개.png" class="card-img-top" alt="개">
-      <div class="card-body">
-        <h5 class="card-title">프린트 연습용 싸게 해드립니다</h5>
-        <p class="card-text">
-          <li>입찰 가격 : 50,000</li>
-          <li>대기 작업 수 : 1</li>
-          <li>예상 작업완료일자 : 10.6</li>
-          <li>평점 : 3.2 / 5.0</li>
-        </p>
-        <button>입찰확인</button>
+    
+    <div class="col">
+      <div class="card">
+        <img src="assets/Anonymous.png" class="card-img-top" alt="Anonymous">
+        <div class="card-body">
+          <h5 class="card-title">피규어제작 싸게 해드려요</h5>
+          <p class="card-text">
+            <li>입찰 가격 : 70,000</li>
+            <li>대기 작업 수 : 0</li>
+            <li>예상 작업완료일자 : 10. 7</li>
+            <li>평점 : 3.8 / 5.0</li>
+          </p>
+          <button>입찰확인</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
-      <div class="card-body">
-        <h5 class="card-title">한양3D팩토리</h5>
-        <p class="card-text">
-          <li>입찰 가격 : 91,000</li>
-          <li>대기 작업 수 : 14</li>
-          <li>예상 작업완료일자 : 10. 11</li>
-          <li>평점 : 4.5 / 5.0</li>
-        </p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>             
+    <div class="col">
+      <div class="card">
+        <img src="assets/개.png" class="card-img-top" alt="개">
+        <div class="card-body">
+          <h5 class="card-title">프린트 연습용 싸게 해드립니다</h5>
+          <p class="card-text">
+            <li>입찰 가격 : 50,000</li>
+            <li>대기 작업 수 : 1</li>
+            <li>예상 작업완료일자 : 10.6</li>
+            <li>평점 : 3.2 / 5.0</li>
+          </p>
+          <button>입찰확인</button>
+        </div>
       </div>
     </div>
+    <div class="col">
+      <div class="card">
+        <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
+        <div class="card-body">
+          <h5 class="card-title">한양3D팩토리</h5>
+          <p class="card-text">
+            <li>입찰 가격 : 91,000</li>
+            <li>대기 작업 수 : 14</li>
+            <li>예상 작업완료일자 : 10. 11</li>
+            <li>평점 : 4.5 / 5.0</li>
+          </p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>             
+        </div>
+      </div>
+    </div>
+    <!-- 버튼에 배지 추가해서 몇개의 입찰이 올라왔는지 볼 수 있게해도 될것같네요 -->
   </div>
-  <!-- 버튼에 배지 추가해서 몇개의 입찰이 올라왔는지 볼 수 있게해도 될것같네요 -->
+  {% endblock %}
 </div>
-{% endblock %}

@@ -42,7 +42,7 @@
                     <input type="address" class="form-control" name="address" id="address" placeholder="주소를 입력해주세요."
                            value="{{ form.address.value|default_if_none:'' }}">
                 </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">버튼만 누르면 가입 완료!</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="location.href='http://127.0.0.1:8000/common/login/'">버튼만 누르면 가입 완료!</button>
             </form>
         </div>
     </div>
