@@ -3,20 +3,34 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from common.forms import SignupForm, EquipmentForm
 from sell.models import Equipment
+from trade.models import Trade, Bid, Estimate
 # Create your views here.
 
 def index(request):
     return render(request, '../templates/common/temp/05_메인(로그인전).html')
 
 def mypage(request):
-    if request.user.flag == "SELLER":
-        user = request.user
+    user = request.user
+
+    # TODO: 거래내역 불러오기 ( input = 유저ID, output = 견적, 입찰, 거래 )
+    if user.flag == "SELLER":
         equipment = Equipment.objects.get(pk=user.equipment_id1) 
         method = equipment.method
         materials = equipment.material.split('/')
+
+        # 1.2 판매자 - 자신이 입찰한 Bid 중 낙찰된 Bid 불러오기
+        bid_log = Bid.objects.filter(seller_id=user.username)
+        trade_log = Trade.objects.filter()
+
+    elif user.flag == "BUYER":
+         # 1. 입찰이 끝난 Bid 데이터 불러온다.
+        # 1.1 구매자 - 자신이 등록한 견적 불러오기  
+        estimate_log = Estimate.objects.filter(buyer_id=user.username, finished=True)
+
     return render(request, 'common/temp/마이페이지.html', {
                                                         'method': method,
-                                                        'materials': materials
+                                                        'materials': materials,
+                                                        'log': 'log',
                                                         })
 
 def signup(request):
