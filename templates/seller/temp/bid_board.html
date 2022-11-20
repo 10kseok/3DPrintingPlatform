@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block content %}
 <style>
     #tb {
@@ -61,7 +62,7 @@
                                 <li>희망 재료: {{ b.estimate_id.material }}</li><br>
                                 <li>제작 방식: {{ b.estimate_id.method }}</li><br>
                                 <li>요청 사항: {{ b.estimate_id.detail }}</li><br>
-                                <li>입찰 가격 : {{ b.price }}</li><br>
+                                <li>입찰 가격 : {{ b.price | intcomma }}</li><br>
                                 <li>입찰 시각 : {{ b.bid_date }}</li><br>
                                 </div>
                             </ul>
@@ -86,7 +87,7 @@
                                 <li>희망 재료: {{ c.estimate_id.material }}</li><br>
                                 <li>제작 방식: {{ c.estimate_id.method }}</li><br>
                                 <li>요청 사항: {{ c.estimate_id.detail }}</li><br>
-                                <li>낙찰 가격 : {{ c.price }}</li><br>
+                                <li>낙찰 가격 : {{ c.price | intcomma }}</li><br>
                                 <li>낙찰 시각 : {{ c.bid_date }}</li><br>
                                 </div>
                             </ul>
