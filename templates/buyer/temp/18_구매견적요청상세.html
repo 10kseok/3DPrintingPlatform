@@ -1,62 +1,69 @@
+<style>
+  #register_estimate {
+    margin: 20px;
+  }
+</style>
 {% extends 'base.html' %}
 {% block content %}
-<form method='post' action="{% url 'buy:register_estimate' %}" enctype="multipart/form-data">
-  {% csrf_token %}
-  {% include "form_errors.html" %}
-  <ul class="list-group">
-    <li class="list-group-item">프로젝트 이름
-      <input type="text" class="form-control" id="project_name" name="project_name" placeholder="프로젝트 이름을 입력하세요" required>
-    </li>
-    <li class="list-group-item">도면
-      <input type="file" class="form-control" id="drawing" name="drawing" required>
-    </li>
-    <li class="list-group-item">재료
-      <div class="dropdown">
-        <select name="material">
-          <option value="PLA"><a class="dropdown-item" href="#">상관없음</a></option>
-          <option value="PLA"><a class="dropdown-item" href="#">PLA</a></option>
-          <option value="ABS"><a class="dropdown-item" href="#">ABS</a></option>
-          <option value="PETG"><a class="dropdown-item" href="#">PETG</a></option>
-          <option value="TPU"><a class="dropdown-item" href="#">TPU</a></option>
-          <option value="ABS-LIKE"><a class="dropdown-item" href="#">ABS-LIKE</a></option>
-          <option value="RESIN"><a class="dropdown-item" href="#">RESIN</a></option>
-        </select>
-      </div>
-    </li>
-    <li class="list-group-item">출력방식
-      <div class="dropdown">
-        <select name="method">
-          <option value="PLA"><a class="dropdown-item" href="#">상관없음</a></option>
-          <option value="SLA"><a class="dropdown-item" href="#">SLA</a></option>
-          <option value="FDM"><a class="dropdown-item" href="#">FDM</a></option>
-          <option value="Polyjet"><a class="dropdown-item" href="#">Polyjet</a></option>
-          <option value="SLM/DMLS"><a class="dropdown-item" href="#">SLM/DMLS</a></option>
-          <option value="MJF"><a class="dropdown-item" href="#">MJF</a></option>
-          <option value="SLS"><a class="dropdown-item" href="#">SLS</a></option>
-        </select>
-      </div>
-    </li>
-    <li class="list-group-item">수량
-      <input type="text" class="form-control" id="pieces" name="pieces" placeholder="수량을 입력하세요" value="" required>
-    </li>
-    <li class="list-group-item">후처리 여부<br>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="detail" value="마감">
-        <label class="form-check-label" for="inlineCheckbox1">마감</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="detail" value="도색">
-        <label class="form-check-label" for="inlineCheckbox2">도색</label>
-      </div>
-    </li>
-  </ul>
-  <button class="btn btn-primary" type="submit" onclick="javascript:btn()">견적요청</button>
-  <script> 
-    function btn(){  
-        if(confirm("견적 등록 하시겠습니까?")){
-            alert("견적 등록 되었습니다.");
-        }
-    } 
-</script>
-</form>
+<div id="register_estimate">
+  <form method='post' action="{% url 'buy:register_estimate' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include "form_errors.html" %}
+    <ul class="list-group">
+      <li class="list-group-item">프로젝트 이름
+        <input type="text" class="form-control" id="project_name" name="project_name" placeholder="프로젝트 이름을 입력하세요" required>
+      </li>
+      <li class="list-group-item">도면
+        <input type="file" class="form-control" id="drawing" name="drawing" required>
+      </li>
+      <li class="list-group-item">재료
+        <div class="dropdown">
+          <select name="material">
+            <option value="NULL"><a class="dropdown-item" href="#">상관없음</a></option>
+            <option value="PLA"><a class="dropdown-item" href="#">PLA</a></option>
+            <option value="ABS"><a class="dropdown-item" href="#">ABS</a></option>
+            <option value="PETG"><a class="dropdown-item" href="#">PETG</a></option>
+            <option value="TPU"><a class="dropdown-item" href="#">TPU</a></option>
+            <option value="ABS-LIKE"><a class="dropdown-item" href="#">ABS-LIKE</a></option>
+            <option value="RESIN"><a class="dropdown-item" href="#">RESIN</a></option>
+          </select>
+        </div>
+      </li>
+      <li class="list-group-item">출력방식
+        <div class="dropdown">
+          <select name="method">
+            <option value="NULL"><a class="dropdown-item" href="#">상관없음</a></option>
+            <option value="SLA"><a class="dropdown-item" href="#">SLA</a></option>
+            <option value="FDM"><a class="dropdown-item" href="#">FDM</a></option>
+            <option value="Polyjet"><a class="dropdown-item" href="#">Polyjet</a></option>
+            <option value="SLM/DMLS"><a class="dropdown-item" href="#">SLM/DMLS</a></option>
+            <option value="MJF"><a class="dropdown-item" href="#">MJF</a></option>
+            <option value="SLS"><a class="dropdown-item" href="#">SLS</a></option>
+          </select>
+        </div>
+      </li>
+      <li class="list-group-item">수량
+        <input type="text" class="form-control" id="pieces" name="pieces" placeholder="수량을 입력하세요" value="" required>
+      </li>
+      <li class="list-group-item">후처리 여부<br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="detail" value="마감">
+          <label class="form-check-label" for="inlineCheckbox1">마감</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="detail" value="도색">
+          <label class="form-check-label" for="inlineCheckbox2">도색</label>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-primary" type="submit" onclick="javascript:btn()">견적요청</button>
+    <script> 
+      function btn(){  
+          if(confirm("견적 등록 하시겠습니까?")){
+              alert("견적 등록 되었습니다.");
+          }
+      } 
+  </script>
+  </form>
+</div>
 {% endblock %}
