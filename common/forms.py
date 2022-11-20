@@ -22,8 +22,3 @@ class SignupForm(UserCreationForm):
             'TEL': '전화번호', 
             'address': '주소',
         }  
-
-class EquipmentForm(forms.ModelForm):
-    class Meta:
-        model = Equipment
-        fields = "__all__"

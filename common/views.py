@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from common.forms import SignupForm, EquipmentForm
+from common.forms import SignupForm
 from sell.models import Equipment
 from trade.models import Trade, Bid, Estimate
 # Create your views here.
@@ -12,25 +12,30 @@ def index(request):
 def mypage(request):
     user = request.user
 
-    # TODO: 거래내역 불러오기 ( input = 유저ID, output = 견적, 입찰, 거래 )
+    # TODO: 거래내역 불러오기 ( input = 유저ID, output = Trade )
     if user.flag == "SELLER":
         equipment = Equipment.objects.get(pk=user.equipment_id1) 
         method = equipment.method
         materials = equipment.material.split('/')
-
-        # 1.2 판매자 - 자신이 입찰한 Bid 중 낙찰된 Bid 불러오기
-        bid_log = Bid.objects.filter(seller_id=user.username)
-        trade_log = Trade.objects.filter()
-
+        # ** 생산자는 Estimate에 포함된 속성이 아니기에 Bid를 먼저 조회한다. **
+        # 자신이 입찰한 Bid 중 낙찰된 Bid 불러오기
+        bid_log = Bid.objects.filter(seller_id=user, finished=True)
+        # 낙찰된 Bid_id로 Trade 불러오기
+        trade_log = Trade.objects.filter(bid_id__in=bid_log).order_by('-success_date')
+        
     elif user.flag == "BUYER":
-         # 1. 입찰이 끝난 Bid 데이터 불러온다.
-        # 1.1 구매자 - 자신이 등록한 견적 불러오기  
-        estimate_log = Estimate.objects.filter(buyer_id=user.username, finished=True)
+        method, materials = '', ''
+        # ** 구매자는 Estimate에 포함된 속성이므로 Estimate부터 조회한다. **
+        # 자신이 등록한 Estimate 데이터를 불러온다.
+        estimate_log = Estimate.objects.filter(buyer_id=user)
+        # Bid를 통해 Trade 불러오기
+        trade_log = Trade.objects.filter(estimate_id__in=estimate_log).order_by('-success_date')
 
+ 
     return render(request, 'common/temp/마이페이지.html', {
                                                         'method': method,
                                                         'materials': materials,
-                                                        'log': 'log',
+                                                        'trade_log': trade_log,
                                                         })
 
 def signup(request):

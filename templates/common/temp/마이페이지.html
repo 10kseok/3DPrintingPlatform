@@ -8,7 +8,7 @@
             <form class="mypage-form" method="post" action="">
                 <div class="col-md-6 mb-3">
                     <label for="first_name">이름</label>
-                    <label type="text" class="form-control" name="last_name" id="last_name" value="" required> {{user.last_name}} </label>
+                    <label type="text" class="form-control" name="first_name" id="first_name" value="" required> {{user.first_name}} </label>
                 </div>
 
                 <div class="col-md-6 mb-3">
@@ -79,226 +79,194 @@
         </div>
 
         <div class="input-form col-md-12 mx-auto"><br>
-            <h4 class="mb-3">
-                거래내역
-            </h4>
+            <h4 class="mb-3"> 거래내역 </h4>
             <form class="trade_history-form" method="post" action="">
                 <!--구매자만 보이는 거래내역-->
                   <!-- 거래내역 클릭 후 상세정보 팝업 -->
-                  <!-- Button trigger modal -->
                 {% if user.flag == "BUYER" %}
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="row">
-                        <div class="col">
-                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                            <div class="col-auto d-none d-lg-block" style="text-align: center;">
-                                <div class="row p-1">
-                                    <img style="width: 150px; height: 150px"src="{{ estimate.drawing.url }}" alt=""> 
-                                </div>
-                            </div>
-                            <div class="col p-4 d-flex flex-column position-static">
-                                {% if estimate %}
-                                    <h3 class="mb">{{ estimate.project_name }}</h3>
-                                {% endif %}
-                                <div style="color: white; text-align: right;" >
-                                    {% if bid %}
-                                    <p>주문금액: {{bid.price}}원<br>
-                                        할인금액: (-)0원<br>
-                                        총 결제금액: {{bid.price}}원</p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </button><br>
-                  <!-- 팝업된 거래내역 상세정보 -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            {% if trade %}
-                            <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
-                            {% endif %}
-                        <div class="row">
-                            <div class="col">
-                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                <div class="col-auto d-none d-lg-block" style="text-align: center;">
-                                    <div class="row p-1">
-                                        <img style="width: 150px; height: 150px"src="{{ estimate.drawing.url }}" alt=""> 
-                                        <a href="#" class="btn btn-sm btn-secondary border-white bg-gray">도면상세보기</a>
-                                    </div>
-                                </div>
-                
-                                <div class="col p-4 d-flex flex-column position-static">
-                                    {% if estimate %}
-                                        <h3 class="mb">{{ estimate.project_name }}</h3>
-                                        <p class="mb-auto">수량: {{ estimate.pieces }}개</p>
-                                        <p class="mb-auto">재료: {{ estimate.material }}</p>
-                                        <p class="mb-auto">방식: {{ estimate.method }}</p>
-                                        <p class="mb-auto">요청사항: {{ estimate.detail }}</p>
-                                    {% endif %}
-                                    <!-- <div class="mb-1">재료: 필라멘트</div> -->
-                                    <!-- <a href="#" class="stretched-link">Continue reading</a> -->
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        
-                        <div class="row mb-2">
-                            <div class="col-md-6">
-                            <header>제작자 정보</header>
-                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                <div class="col-auto d-none d-lg-block">                
-                                    <p>3D프린팅하는 청룡</p>
-                                    <img src="assets/청룡.png" width="100" height="150" alt="판매자">
-                                </div>
-                                <div class="col p-4 d-flex flex-column position-static">
-                                    <p>주소: {{ seller_info.address }} <br>
-                                        연락처: {{ seller_info.TEL }} <br>
-                                        {% if bid %}
-                                            입찰가격: {{bid.price}}원 <br>
-                                        {% endif %}
-                                        대기작업수: 7 <br>
-                                        예상 작업완료일자: 22.10.21
-                                    </p>
-                                </div>
-                                </div>
-                            </div>
-                
-                            <div class="col-md-6">
-                                <div class="row g-0  overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                                <div style="color: gray; text-align: right;" >
-                                    {% if bid %}
-                                    <p>주문금액: {{bid.price}}원<br>
-                                        할인금액: (-)0원<br>
-                                        총 결제금액: {{bid.price}}원</p>
-                                    {% endif %}
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--여기까지 구매자만 보이는 거래내역-->
-                {% else %}
-                <!--판매자만 보이는 거래내역-->
-                  <!-- 거래내역 클릭 후 상세정보 팝업 -->
-                  <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="row">
-                    <div class="col">
-                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col-auto d-none d-lg-block" style="text-align: center;">
-                            <div class="row p-1">
-                                <img style="width: 150px; height: 150px"src="{{ estimate.drawing.url }}" alt=""> 
-                            </div>
-                        </div>
-                        <div class="col p-4 d-flex flex-column position-static">
-                            {% if estimate %}
-                            {% for estimate in estimate %}
-                                <h3 class="mb">{{ estimate.project_name }}</h3>
-                            {% endfor %}
-                            {% endif %}
-
-                            <div style="color: white; text-align: right;" >
-                                {% if bid %}
-                                {% for bid in bid %}
-                                <p>주문금액: {{bid.price}}원<br>
-                                할인금액: (-)0원<br>
-                                총 결제금액: {{bid.price}}원</p>
-                                {% endfor %}
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
-                </button><br>
-
-                <!-- 팝업된 거래내역 상세정보 -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            {% if trade %}
-                            {% for trade in trade %}
-                                <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
-                            {% endfor %}
-                            {% endif %}
+                    {% for trade in trade_log %}
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div class="row">
                                 <div class="col">
                                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                     <div class="col-auto d-none d-lg-block" style="text-align: center;">
                                         <div class="row p-1">
-                                            <img src="assets/짱구.jpg" alt=""> 
-                                            <a href="#" class="btn btn-sm btn-secondary border-white bg-gray">도면상세보기</a>
+                                            <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt="도안 이미지"> 
                                         </div>
                                     </div>
-                    
-                                    <div class="col p-4 d-flex flex-column position-static">
-                                    {% if estimate %}
-                                        {% for estimate in estimate %}
-                                        <h3 class="mb">{{ estimate.project_name }}</h3>
-                                        <p class="mb-auto">수량: {{ estimate.pieces }}개</p>
-                                        <p class="mb-auto">재료: {{ estimate.material }}</p>
-                                        <p class="mb-auto">방식: {{ estimate.method }}</p>
-                                        <p class="mb-auto">요청사항: {{ estimate.detail }}</p>
-                                        {% endfor %}
-                                    {% endif %}
-                                        <!-- <div class="mb-1">재료: 필라멘트</div> -->
-                                    <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+                                    <div class="col p-4 d-flex flex-column position-static">    
+                                        <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                                        <div style="color: white; text-align: right;" >
+                                            <p>주문금액: {{ trade.bid_id.price }}원<br>
+                                                할인금액: (-)0원<br>
+                                                총 결제금액: {{ trade.bid_id.price }}원</p>
+                                        </div>
+
                                     </div>
                                 </div>
                                 </div>
                             </div>
+                        </button><br>
+                        <!-- 팝업된 거래내역 상세정보 -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">거래내역</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                            <div class="col-auto d-none d-lg-block" style="text-align: center;">
+                                                <div class="row p-1">
+                                                    <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt=""> 
+                                                    <a href="#" class="btn btn-sm btn-secondary border-white bg-gray">도면상세보기</a>
+                                                </div>
+                                            </div>
                             
-                            <div class="row mb-2">
-                                <div class="col-md-6">
-                                <header><h5>구매자 정보</h5></header>
-                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                    <div class="col-auto d-none d-lg-block">
-                                        <h6>스팀팩마린</h6>
-                                        <img src="assets/마린.png" width="150" height="150" alt="구매자">
-                                    </div>
-                                    <div class="col p-4 d-flex flex-column position-static">
-                                        <p>주소: 경상남도 창원시 의창구 창원대학로 20 <br>
-                                            연락처: 010-3652-8765 <br>  
-                                        </p>
-                            
+                                            <div class="col p-4 d-flex flex-column position-static">
+                                                <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                                                <p class="mb-auto">수량: {{ trade.estimate_id.pieces }}개</p>
+                                                <p class="mb-auto">재료: {{ trade.estimate_id.material }}</p>
+                                                <p class="mb-auto">방식: {{ trade.estimate_id.method }}</p>
+                                                <p class="mb-auto">요청사항: {{ trade.estimate_id.detail }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                    
-                                <div class="col-md-6">
-                                <div class="row g-0 overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                                    <div style="color: gray; text-align: right;" >
-                                    {% if bid %}
-                                        {% for bid in bid %}
-                                        <p>주문금액: {{bid.price}}원<br>
-                                        할인금액: (-)0원<br>
-                                        총 결제금액: {{bid.price}}원</p>
-                                        {% endfor %}
-                                    {% endif %}
+                                
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                    <header>제작자 정보</header>
+                                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col-auto d-none d-lg-block">                
+                                            <p>{{ trade.bid_id.seller_id.username }}</p>
+                                            <img src="assets/청룡.png" width="100" height="150" alt="판매자">
+                                        </div>
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <p>주소: {{ trade.bid_id.seller_id.address }} <br>
+                                                연락처: {{ trade.bid_id.seller_id.TEL }} <br>
+                                                입찰가격: {{ trade.bid_id.price }}원 <br>
+                                                대기작업수: 7 <br>
+                                                예상 작업완료일자: 22.10.21
+                                            </p>
+                                        </div>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <div class="row g-0  overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+                                        <div style="color: gray; text-align: right;" >
+                                            <p>주문금액: {{trade.bid_id.price}}원<br>
+                                                할인금액: (-)0원<br>
+                                                총 결제금액: {{trade.bid_id.price}}원</p>
+                                        </div>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                <!--여기까지 판매자만 보이는 거래내역-->
+                        <!--여기까지 구매자만 보이는 거래내역-->    
+                    {% endfor %}
+                {% else %}
+                    {% for trade in trade_log %}
+                    <!--판매자만 보이는 거래내역-->
+                    <!-- 거래내역 클릭 후 상세정보 팝업 -->
+                    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div class="row">
+                                <div class="col">
+                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                    <div class="col p-4 d-flex flex-column position-static">
+                                                <div class="col-auto d-none d-lg-block" style="text-align: center;">
+                                                    <div class="row p-1">
+                                                        <img style="width: 150px; height: 150px"src="{{ estimate.drawing.url }}" alt=""> 
+                                                    </div>
+                                                </div>
+                                                <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+            
+                                        <div style="color: white; text-align: right;" >
+                                            <p>주문금액: {{trade.bid_id.price}}원<br>
+                                                할인금액: (-)0원<br>
+                                                총 결제금액: {{trade.bid_id.price}}원
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                            </button><br>
+            
+                            <!-- 팝업된 거래내역 상세정보 -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">거래내역</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="color: gray; text-align: right;">결제일 :{{ trade.success_date }}</p>
+                                        <div class="row">
+                                            <div class="col">
+                                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                                <div class="col p-4 d-flex flex-column position-static">
+                                                        <div class="col-auto d-none d-lg-block" style="text-align: center;">
+                                                            <div class="row p-1">
+                                                                <img src="{{ trade.estimate_id.drawing.url }}" width="150" height="150" alt=""> 
+                                                                <a href="#" class="btn btn-sm btn-secondary border-white bg-gray">도면상세보기</a>
+                                                            </div>
+                                                        </div>
+                                                        <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                                                        <p class="mb-auto">수량: {{ trade.estimate_id.pieces }}개</p>
+                                                        <p class="mb-auto">재료: {{ trade.estimate_id.material }}</p>
+                                                        <p class="mb-auto">방식: {{ trade.estimate_id.method }}</p>
+                                                        <p class="mb-auto">요청사항: {{ trade.estimate_id.detail }}</p>
+                                                    <!-- <div class="mb-1">재료: 필라멘트</div> -->
+                                                <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-2">
+                                            <div class="col-md-6">
+                                            <header><h5>구매자 정보</h5></header>
+                                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                                <div class="col-auto d-none d-lg-block">
+                                                    <h6>{{ trade.estimate_id.buyer_id.username }}</h6>
+                                                    <img src="assets/마린.png" width="150" height="150" alt="구매자">
+                                                </div>
+                                                <div class="col p-4 d-flex flex-column position-static">
+                                                    <p>주소: {{ trade.estimate_id.buyer_id.address }} <br>
+                                                        연락처: {{ trade.estimate_id.buyer_id.TEL }} <br>  
+                                                    </p>
+                                        
+                                                </div>
+                                            </div>
+                                            </div>
+                                
+                                            <div class="col-md-6">
+                                            <div class="row g-0 overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+                                                <div style="color: gray; text-align: right;" >
+                                                    <p>주문금액: {{trade.bid_id.price}}원<br>
+                                                        할인금액: (-)0원<br>
+                                                        총 결제금액: {{trade.bid_id.price}}원</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!--여기까지 판매자만 보이는 거래내역-->
+                    {% endfor %}
                 {% endif %}
             </form>
         </div>

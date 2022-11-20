@@ -63,7 +63,7 @@
                     {% for bid in bid %}
                     <p>주문금액: {{bid.price}}원<br>
                       할인금액: (-)0원<br>
-                      총 결제금액: {{bid.price}}원</p>
+                      총 결제금액: {{bid.price:_}}원</p>
                     {% endfor %}
                   {% endif %}
                 </div>
