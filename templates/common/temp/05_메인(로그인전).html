@@ -19,8 +19,11 @@
 {% if user.is_authenticated %}
   <div class="container" id="login">  
     <h1>자신이 원하는 출력물을 최적의 가격에!</h1>
-    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'buy:estimate_list' %}'">구매자 Let's go!</button>
-    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'sell:bid_board' %}'">판매자 Let's go!</button>
+    {% if user.flag == "SELLER" %}
+      <button type="button" class="btn btn-primary" onclick="location.href='{% url 'sell:bid_board' %}'">생산자 Let's go!</button>
+    {%else%}
+      <button type="button" class="btn btn-primary" onclick="location.href='{% url 'buy:estimate_list' %}'">의뢰인 Let's go!</button>
+    {% endif%}
   </div>
 {% endif %}
 {% if not user.is_authenticated %}
