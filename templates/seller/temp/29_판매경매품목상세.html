@@ -36,12 +36,14 @@
                             <form method='post'>
                                 {% csrf_token %}
                                 <input type="number" name="price" id="price">
-                                <button type="submit">견적 입찰</button>
-                                {% comment %}
-                                    TODO
-                                    1.견적입찰 누르면 입찰완료창 팝업
-                                    2.팝업 확인시 다시 board로 돌아가게
-                                {% endcomment %}
+                                <button type="submit" onclick="javascript:btn()">견적 입찰</button>
+                                <script> 
+                                    function btn(){  
+                                        if(confirm("입찰하시겠습니까?")){
+                                            alert("입찰되었습니다.");
+                                        }
+                                    } 
+                                </script>
                             </form>
 						</header>
 					</div>
