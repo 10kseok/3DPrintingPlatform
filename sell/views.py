@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import generic
 from django.db.models import Q
@@ -43,6 +43,7 @@ def estimate_detail(request, estimate_id):
             finished=False
         )
         bid.save()
+        return redirect('sell:bid_board')
     
     return render(request, "seller/temp/29_판매경매품목상세.html", { "estimate": estimate })
 

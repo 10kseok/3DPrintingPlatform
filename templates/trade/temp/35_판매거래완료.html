@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block content %}
     <div class="container py-4">
         <header class="p-3 mb-4 bg-light rounded-3">
@@ -61,9 +62,9 @@
                 <div style="color: gray; text-align: right;" >
                   {% if bid %}
                     {% for bid in bid %}
-                    <p>주문금액: {{bid.price}}원<br>
+                    <p>주문금액: {{bid.price | intcomma}}원<br>
                       할인금액: (-)0원<br>
-                      총 결제금액: {{bid.price:_}}원</p>
+                      총 결제금액: {{bid.price | intcomma}}원</p>
                     {% endfor %}
                   {% endif %}
                 </div>

@@ -8,6 +8,7 @@
 </style>
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block content %}
 <div id="form">
   <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -20,7 +21,7 @@
           <h5 class="card-title">{{ bid.seller_id.username }}</h5>
           <p class="card-text">
             
-            <li>입찰 가격 : {{ bid.price }}원</li>
+            <li>입찰 가격 : {{ bid.price | intcomma }}원</li>
             {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
       
           </p>
@@ -34,7 +35,7 @@
       <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">한양3D팩토리</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{ bid.seller_id.username }}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -54,7 +55,7 @@
               <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
           </div>
           <div class="modal-footer">
-          <label>가격: 91000원</label>
+          <label>입찰 가격 : {{ bid.price | intcomma }}원</label>
           <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' bid.bid_id %}'">판매자 선택</button>
           </div>
       </div>
