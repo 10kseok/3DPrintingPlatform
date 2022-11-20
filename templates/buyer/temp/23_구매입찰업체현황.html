@@ -25,8 +25,17 @@
             {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
       
           </p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>
-      </div>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰상세</button>
+          <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
+          <script> 
+            function btn(){  
+                if(confirm("해당 생산자와 거래하시겠습니까?")){
+                    alert("거래 완료!");
+                    location.href='{% url 'trade:buy_complete' bid.bid_id %}'
+                }
+            } 
+          </script>
+        </div>
       </div>
     </div>
   
@@ -56,7 +65,15 @@
           </div>
           <div class="modal-footer">
           <label>입찰 가격 : {{ bid.price | intcomma }}원</label>
-          <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' bid.bid_id %}'">판매자 선택</button>
+          <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
+          <script> 
+            function btn(){  
+                if(confirm("해당 생산자와 거래하시겠습니까?")){
+                    alert("거래 완료!");
+                    location.href='{% url 'trade:buy_complete' bid.bid_id %}'
+                }
+            } 
+          </script>
           </div>
       </div>
       </div>
