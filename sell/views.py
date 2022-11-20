@@ -9,14 +9,13 @@ from django.utils import timezone
 # Create your views here.
 
 def bid_board(request):
-    # TODO: clear!
     # 1. 보유한 장비목록 가져오기
     equipment = Equipment.objects.get(pk=request.user.equipment_id1)
-    available_material = equipment.material.split("/")
+    available_material = equipment.material.split("/") + ["NULL"]
     # 2. 제작가능한 estimate 조회
     available_estimates = Estimate.objects.filter(
-        method=equipment.method,
-        material__in=available_material
+        method__in=[equipment.method, "NULL"],
+        material__in=available_material,
     )
     # 3. 자신이 입찰 넣은 bid 조회
     bidding = Bid.objects.filter(finished=False, seller_id=request.user)
@@ -46,10 +45,6 @@ def estimate_detail(request, estimate_id):
         return redirect('sell:bid_board')
     
     return render(request, "seller/temp/29_판매경매품목상세.html", { "estimate": estimate })
-
-# p28 (sell/kanban/)
-def kanban(request):
-    return render(request, 'seller/temp/seller_kanban.html')
     
 # p29 (sell/detail/)
 def detail(request):
