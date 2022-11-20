@@ -16,7 +16,7 @@
     {% comment %} seller info thumnail {% endcomment %}
     <div class="col">
       <div class="card">
-        <img src="assets/창원대학교.png" class="card-img-top" alt="판매자 이미지"> 
+        <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="판매자 이미지"> 
         <div class="card-body">
           <h5 class="card-title">{{ bid.seller_id.username }}</h5>
           <p class="card-text">
@@ -39,7 +39,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
+              <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="한양3D팩토리">
               <li>평점 : 4.2 / 5.0</li>
               <li>주소 : 경남 창원시 의창구</li>
               <li>전화번호 : 055-213-3690</li>
@@ -63,58 +63,11 @@
   </div>
   {% endfor %}
   
-    <div class="col">
-      <div class="card">
-        <img src="assets/창원대학교.png" class="card-img-top" alt="창원대학교"> 
-        <div class="card-body">
-          <h5 class="card-title">창원대 신소재공학부 3D프린트 연구실</h5>
-          <p class="card-text">
-            
-            <li>입찰 가격 : 80,000</li>
-            <li>대기 작업 수 : 7</li>
-            <li>예상 작업완료일자 : 10. 15</li>
-            <li>평점 : 4.2 / 5.0</li>
-          </p>
-          <button>입찰확인</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col">
-      <div class="card">
-        <img src="assets/Anonymous.png" class="card-img-top" alt="Anonymous">
-        <div class="card-body">
-          <h5 class="card-title">피규어제작 싸게 해드려요</h5>
-          <p class="card-text">
-            <li>입찰 가격 : 70,000</li>
-            <li>대기 작업 수 : 0</li>
-            <li>예상 작업완료일자 : 10. 7</li>
-            <li>평점 : 3.8 / 5.0</li>
-          </p>
-          <button>입찰확인</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="assets/개.png" class="card-img-top" alt="개">
-        <div class="card-body">
-          <h5 class="card-title">프린트 연습용 싸게 해드립니다</h5>
-          <p class="card-text">
-            <li>입찰 가격 : 50,000</li>
-            <li>대기 작업 수 : 1</li>
-            <li>예상 작업완료일자 : 10.6</li>
-            <li>평점 : 3.2 / 5.0</li>
-          </p>
-          <button>입찰확인</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="assets/한양3D팩토리.png" class="card-img-top" alt="한양3D팩토리">
-        <div class="card-body">
-          <h5 class="card-title">한양3D팩토리</h5>
+  <div class="col">
+    <div class="card">
+      <img src="{% static 'images/Anonymous.png' %}" width='30px' height='30px' class="card-img-top" alt="한양3D팩토리">
+      <div class="card-body">
+        <h5 class="card-title">한양3D팩토리</h5>
           <p class="card-text">
             <li>입찰 가격 : 91,000</li>
             <li>대기 작업 수 : 14</li>
