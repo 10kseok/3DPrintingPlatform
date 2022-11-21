@@ -31,7 +31,7 @@
                             {% for est in estimates %}
                             <a href={% url 'sell:estimate_detail' est.estimate_id %}><button id="LeftItem">
                                 <ul style="float: center; list-style:none">
-                                    <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{est.drawing}}" alt="도면 미리보기"></div>
+                                    <div style="float: left;"><img style="width:150px; height:150px;" src="{{est.drawing.url}}" alt="도면 미리보기"></div>
                                     <div>
                                     <li>구매자: {{ est.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
                                     <li>제품명: {{ est.project_name }}</li><br>
@@ -55,7 +55,7 @@
                         {% for b in bidding %}
                         <button id="CenterItem">
                             <ul style="float: center; list-style:none">
-                                <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{b.estimate_id.drawing}}" alt="도면 미리보기"></div>
+                                <div style="float: left;"><img style="width:150px; height:150px;" src="{{b.estimate_id.drawing.url}}" alt="도면 미리보기"></div>
                                 <div>
                                 <li>구매자: {{ b.estimate_id.buyer_id }}</li><br>
                                 <li>제품명: {{ b.estimate_id.project_name }}</li><br>
@@ -81,7 +81,7 @@
                         <a href={% url 'trade:sell_complete' %}>
                         <button id="RightItem">
                             <ul style="float: center; list-style:none">
-                                <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{c.estimate_id.drawing}}" alt="도면 미리보기"></div>
+                                <div style="float: left;"><img style="width:150px; height:150px;" src="{{c.estimate_id.drawing.url}}" alt="도면 미리보기"></div>
                                 <div>
                                 <li>구매자: {{ c.estimate_id.buyer_id.buyer_id }}</li><br>
                                 <li>제품명: {{ c.estimate_id.project_name }}</li><br>
