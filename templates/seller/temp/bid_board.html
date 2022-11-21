@@ -37,7 +37,7 @@
                                     <table>
                                         <tr>
                                             <td>
-                                                <img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{est.drawing}}" alt="도면 미리보기">
+                                                <img style="width:150px; height:150px;" src="{{est.drawing.url}}" alt="도면 미리보기">
                                             </td>
                                             <td>
                                                 <ul style="float: center; list-style:none">
@@ -68,7 +68,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{b.estimate_id.drawing}}" alt="도면 미리보기">
+                                        <img style="width:150px; height:150px;" src="{{b.estimate_id.drawing.url}}" alt="도면 미리보기">
                                     </td>
                                     <td>
                                         <ul style="float: center; list-style:none">
@@ -99,7 +99,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{c.estimate_id.drawing}}" alt="도면 미리보기">
+                                        <img style="width:150px; height:150px;" src="{{c.estimate_id.drawing.url}}" alt="도면 미리보기">
                                     </td>
                                     <td>
                                         <ul style="float: center; list-style:none">
