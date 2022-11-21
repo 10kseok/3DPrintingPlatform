@@ -13,6 +13,7 @@ class Estimate(models.Model):
     detail = models.TextField()
     drawing = models.FileField()
     reg_date = models.DateTimeField()
+    canBid = models.BooleanField(default=True)
 
 # 입찰
 class Bid(models.Model):
