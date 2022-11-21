@@ -94,28 +94,30 @@
             <td id="td1" style="padding: 20px;">
                 <div id="Right">
                     <br><br>
-                    {% if completed %}
-                        {% for c in completed %}
-                        <button id="RightItem" style="border-radius: 10px;">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <img style="width:150px; height:150px;" src="{{c.estimate_id.drawing.url}}" alt="도면 미리보기">
-                                    </td>
-                                    <td>
-                                        <ul style="float: center; list-style:none">
-                                            <li>구매자: {{ c.estimate_id.buyer_id }}</li><br>
-                                            <li>제품명: {{ c.estimate_id.project_name }}</li><br>
-                                            <li>희망 재료: {{ c.estimate_id.material }}</li><br>
-                                            <li>제작 방식: {{ c.estimate_id.method }}</li><br>
-                                            <li>요청 사항: {{ c.estimate_id.detail }}</li><br>
-                                            <li>낙찰 가격 : {{ c.price | intcomma }}</li><br>
-                                            <li>낙찰 시각 : {{ c.bid_date }}</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </table>
-                        </button>
+                    {% if completed_bid %}
+                        {% for c in completed_bid %}
+                            <a href={% url 'trade:sell_complete' c.bid_id %}>
+                            <button id="RightItem" style="border-radius: 10px;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img style="width:150px; height:150px;" src="{{c.estimate_id.drawing.url}}" alt="도면 미리보기">
+                                        </td>
+                                        <td>
+                                            <ul style="float: center; list-style:none">
+                                                <li>구매자: {{ c.estimate_id.buyer_id }}</li><br>
+                                                <li>제품명: {{ c.estimate_id.project_name }}</li><br>
+                                                <li>희망 재료: {{ c.estimate_id.material }}</li><br>
+                                                <li>제작 방식: {{ c.estimate_id.method }}</li><br>
+                                                <li>요청 사항: {{ c.estimate_id.detail }}</li><br>
+                                                <li>낙찰 가격 : {{ c.price | intcomma }}</li><br>
+                                                <li>낙찰 시각 : {{ c.bid_date }}</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </button>
+                            </a>
                         {% endfor %}
                     {% else %}
                         <p>No completed are available.</p>

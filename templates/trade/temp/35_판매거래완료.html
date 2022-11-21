@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load static %}
 {% block content %}
     <div class="container py-4">
         <header class="p-3 mb-4 bg-light rounded-3">
@@ -9,29 +10,25 @@
           </a>
         </header>
         {% if trade %}
-          {% for trade in trade %}
-            <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
-          {% endfor %}
+            <p style="color: gray; text-align: right;">결제일 :{{ trade.success_date }}</p>
         {% endif %}
         <div class="row">
             <div class="col">
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block" style="text-align: center;">
                     <div class="row p-1">
-                        <img src="assets/짱구.jpg" alt=""> 
+                        <img src="{{ estimate.drawing.url }}" width="100px" height="150px" alt=""> 
                         <a href="#" class="btn btn-sm btn-secondary border-white bg-gray">도면상세보기</a>
                     </div>
                 </div>
 
                 <div class="col p-4 d-flex flex-column position-static">
                   {% if estimate %}
-                    {% for estimate in estimate %}
                       <h3 class="mb">{{ estimate.project_name }}</h3>
                       <p class="mb-auto">수량: {{ estimate.pieces }}개</p>
                       <p class="mb-auto">재료: {{ estimate.material }}</p>
                       <p class="mb-auto">방식: {{ estimate.method }}</p>
                       <p class="mb-auto">요청사항: {{ estimate.detail }}</p>
-                    {% endfor %}
                   {% endif %}
                     <!-- <div class="mb-1">재료: 필라멘트</div> -->
                   <!-- <a href="#" class="stretched-link">Continue reading</a> -->
@@ -45,12 +42,12 @@
               <header><h5>의뢰인 정보</h5></header>
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block">
-                    <h6>{{ buyer_info.username }}</h6>
-                    <img src="" style="height:100px; width:100px;" alt="구매자">
+                    <h6>{{ trade.estimate_id.buyer_id.username }}</h6>
+                    <img src="{% static 'images/Anonymous.png' %}" style="height:100px; width:100px;" alt="의뢰인">
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
-                    <p>주소: {{ buyer_info.address }} <br>
-                        연락처: {{ buyer_info.TEL }} <br>  
+                    <p>주소: {{ trade.estimate_id.buyer_id.address }} <br>
+                        연락처: {{ trade.estimate_id.buyer_id.TEL }} <br>  
                     </p>
         
                 </div>
@@ -61,11 +58,9 @@
               <div class="row g-0 overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
                 <div style="color: gray; text-align: right;" >
                   {% if bid %}
-                    {% for bid in bid %}
-                    <p>주문금액: {{bid.price | intcomma}}원<br>
+                    <p>주문금액: {{ bid.price | intcomma }}원<br>
                       할인금액: (-)0원<br>
-                      총 결제금액: {{bid.price | intcomma}}원</p>
-                    {% endfor %}
+                      총 결제금액: {{ bid.price | intcomma }}원</p>
                   {% endif %}
                 </div>
               </div>

@@ -11,10 +11,10 @@ from django.utils import timezone
 def bid_board(request):
     # 1. 보유한 장비목록 가져오기
     equipment = Equipment.objects.get(pk=request.user.equipment_id1)
-    available_material = equipment.material.split("/") + ["NULL"]
+    available_material = equipment.material.split("/") + ["상관없음"]
     # 2. 제작가능한 estimate 조회
     available_estimates = Estimate.objects.filter(
-        method__in=[equipment.method, "NULL"],
+        method__in=[equipment.method, "상관없음"],
         material__in=available_material,
     )
     # 3. 자신이 입찰 넣은 bid 조회
@@ -25,7 +25,7 @@ def bid_board(request):
     context = {
         "estimates": available_estimates,
         "bidding": bidding,
-        "completed": completed_bid,
+        "completed_bid": completed_bid,
     }
     return render(request, "seller/temp/bid_board.html", context)
 
