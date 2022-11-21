@@ -104,7 +104,7 @@
                                     </td>
                                     <td>
                                         <ul style="float: center; list-style:none">
-                                            <li>구매자: {{ c.estimate_id.buyer_id.buyer_id }}</li><br>
+                                            <li>구매자: {{ c.estimate_id.buyer_id }}</li><br>
                                             <li>제품명: {{ c.estimate_id.project_name }}</li><br>
                                             <li>희망 재료: {{ c.estimate_id.material }}</li><br>
                                             <li>제작 방식: {{ c.estimate_id.method }}</li><br>
@@ -118,7 +118,7 @@
                         </button>
                         {% endfor %}
                     {% else %}
-                    <p>No completed are available.</p>
+                        <p>No completed are available.</p>
                     {% endif %}
                 </div>
             </td>
