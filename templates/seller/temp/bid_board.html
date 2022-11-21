@@ -78,6 +78,7 @@
                     <br><br>
                     {% if completed %}
                         {% for c in completed %}
+                        <a href={% url 'trade:sell_complete' %}>
                         <button id="RightItem">
                             <ul style="float: center; list-style:none">
                                 <div style="float: left;"><img style="width:150px; height:150px;" src="{% get_static_prefix %}images/{{c.estimate_id.drawing}}" alt="도면 미리보기"></div>

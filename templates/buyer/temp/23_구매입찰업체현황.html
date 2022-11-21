@@ -16,7 +16,7 @@
     {% comment %} seller info thumnail {% endcomment %}
     <div class="col">
       <div class="card">
-        <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="판매자 이미지"> 
+        <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="판매자 이미지" style="height:200px; width:200px;"> 
         <div class="card-body">
           <h5 class="card-title">{{ bid.seller_id.username }}</h5>
           <p class="card-text">
@@ -48,10 +48,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="한양3D팩토리">
+              <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="생산자 사진" style="height:200px; width:200px;">
               <li>평점 : 4.2 / 5.0</li>
-              <li>주소 : 경남 창원시 의창구</li>
-              <li>전화번호 : 055-213-3690</li>
+              <li>주소 : {{ bid.seller_id.address }}</li>
+              <li>전화번호 : {{ bid.seller_id.TEL }}</li>
               <li>사용기기 : 큐비콘 스타일 플러스 3D 프린터</li>
               <li>판매자 소개 : 창원대학교 신소재공학부 3D프린트 연구실 입니다.</li>
               <br>
