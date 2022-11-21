@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load static %}
 {% block content %}
     <div class="container py-4">
         <header class="p-3 mb-4 bg-light rounded-3">
@@ -42,7 +43,7 @@
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block">                
                     <p>{{ seller_info.username }}</p>
-                    <img src="" style="height:100px; width:100px;" alt="판매자">
+                    <img src={% static 'images/Anonymous.png' %} style="height:100px; width:100px;" alt="판매자">
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
                     <p>주소: {{ seller_info.address }} <br>
