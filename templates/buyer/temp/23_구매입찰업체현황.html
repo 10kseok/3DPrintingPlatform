@@ -64,38 +64,20 @@
               <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
           </div>
           <div class="modal-footer">
-          <label>제시 가격 : {{ bid.price | intcomma }}원</label>
-          <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
-          <script> 
-            function btn(){  
-                if(confirm("해당 생산자와 거래하시겠습니까?")){
-                    alert("거래 완료!");
-                    location.href='{% url 'trade:buy_complete' bid.bid_id %}'
-                }
-            } 
-          </script>
+            <label>제시 가격 : {{ bid.price | intcomma }}원</label>
+            <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
+            <script> 
+              function btn(){  
+                  if(confirm("해당 생산자와 거래하시겠습니까?")){
+                      alert("거래 완료!");
+                      location.href='{% url 'trade:buy_complete' bid.bid_id %}'
+                  }
+              } 
+            </script>
           </div>
       </div>
       </div>
   </div>
   {% endfor %}
-  
-  <div class="col">
-    <div class="card">
-      <img src="{% static 'images/Anonymous.png' %}" width='30px' height='30px' class="card-img-top" alt="한양3D팩토리">
-      <div class="card-body">
-        <h5 class="card-title">한양3D팩토리</h5>
-          <p class="card-text">
-            <li>입찰 가격 : 91,000</li>
-            <li>대기 작업 수 : 14</li>
-            <li>예상 작업완료일자 : 10. 11</li>
-            <li>평점 : 4.5 / 5.0</li>
-          </p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰확인</button>             
-        </div>
-      </div>
-    </div>
-    <!-- 버튼에 배지 추가해서 몇개의 입찰이 올라왔는지 볼 수 있게해도 될것같네요 -->
-  </div>
   {% endblock %}
 </div>
