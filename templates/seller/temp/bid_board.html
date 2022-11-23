@@ -44,7 +44,8 @@
                                                     <li>희망 재료: {{ est.material }}</li><br>
                                                     <li>제작 방식: {{ est.method }}</li><br>
                                                     <li>갯수: {{ est.pieces }}</li><br>
-                                                    <li>요청 사항: {{ est.detail }}</li><br><br>
+                                                    <li>요청 사항: {{ est.detail }}</li><br>
+                                                    <li>등록 날짜 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -76,7 +77,7 @@
                                             <li>제작 방식: {{ b.estimate_id.method }}</li><br>
                                             <li>요청 사항: {{ b.estimate_id.detail }}</li><br>
                                             <li>입찰 가격 : {{ b.price | intcomma }}</li><br>
-                                            <li>입찰 시각 : {{ b.bid_date }}</li>
+                                            <li>입찰 날짜 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -108,7 +109,7 @@
                                                 <li>제작 방식: {{ c.estimate_id.method }}</li><br>
                                                 <li>요청 사항: {{ c.estimate_id.detail }}</li><br>
                                                 <li>낙찰 가격 : {{ c.price | intcomma }}</li><br>
-                                                <li>낙찰 시각 : {{ c.bid_date }}</li>
+                                                <li>거래완료일 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                             </ul>
                                         </td>
                                     </tr>
