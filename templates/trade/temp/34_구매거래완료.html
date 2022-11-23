@@ -42,8 +42,8 @@
             <header>생산자 정보</header>
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block">                
-                    <p style="margin: 10px;">{{ seller_info.username }}</p>
-                    <img src={% static 'images/Anonymous.png' %} style="border: 1px solid black; height:100px; width:100px; margin: 5px; border-radius: 50%;" alt="판매자">
+                    <h6 style="margin: 10px;">{{ seller_info.username }}</h6>
+                    <img src="{% static 'images/Anonymous.png' %}" style="border: 1px solid black; height:100px; width:100px; margin: 5px; border-radius: 50%;" alt="판매자">
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
                     <p>주소: {{ seller_info.address }} <br>

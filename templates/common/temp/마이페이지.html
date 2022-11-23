@@ -209,10 +209,10 @@
                                         </header>
                                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                             <div class="col-auto d-none d-lg-block">                
-                                                <p>
+                                                <h6 style="margin: 10px;">
                                                     {{ trade.bid_id.seller_id.username }}
-                                                </p>
-                                                <img src="images/Anonymous.png" style="width=150px; height=150px;" alt="판매자">
+                                                </h6>
+                                                <img src="{% static 'images/Anonymous.png' %}" style="border: 1px solid black; height:100px; width:100px; margin: 5px; border-radius: 50%;" alt="판매자">
                                             </div>
                                             <div class="col p-4 d-flex flex-column position-static">
                                                 <p>
@@ -333,10 +333,10 @@
                                         </header>
                                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                             <div class="col-auto d-none d-lg-block">
-                                                <h6>
+                                                <h6 style="margin: 10px;">
                                                     {{ trade.estimate_id.buyer_id.username }}
                                                 </h6>
-                                                <img src="assets/마린.png" width="150" height="150" alt="구매자">
+                                                <img src="{% static 'images/Anonymous.png' %}" style="border: 1px solid black; height:100px; width:100px; margin: 5px; border-radius: 50%;" alt="구매자">
                                             </div>
                                             <div class="col p-4 d-flex flex-column position-static">
                                                 <p>
