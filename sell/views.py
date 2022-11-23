@@ -20,6 +20,8 @@ def bid_board(request):
     ).order_by('-reg_date')
     # 3. 자신이 입찰 넣은 bid 조회
     bidding = Bid.objects.filter(finished=False, seller_id=request.user).order_by('-bid_date')
+    # 3 - 1 자신이 입찰 넣은 Estimate는 available_material에서 제외
+    available_estimates = available_estimates.filter(~Q(estimate_id__in=[bid.estimate_id.estimate_id for bid in bidding]))
     # 4. 낙찰된 건 조회
     completed_bid = Bid.objects.filter(finished=True, seller_id=request.user).order_by('-bid_date')
     # 넘겨줄 데이터
