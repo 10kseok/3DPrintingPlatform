@@ -26,7 +26,7 @@
         <tr>
             <td id="td1" style="padding: 20px;">
                 <div id="Left">
-                    <h1 id="Head">입찰가능품목</h1>
+                    <h1 id="Head">견적 제시 가능 품목</h1>
                         {% if estimates %}
                             {% for est in estimates %}
                             <a href={% url 'sell:estimate_detail' est.estimate_id %}>
@@ -39,13 +39,13 @@
                                             <td>
                                                 <ul style="float: center; list-style:none">
                                                     <br>
-                                                    <li>구매자: {{ est.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
+                                                    <li>의뢰인: {{ est.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
                                                     <li>제품명: {{ est.project_name }}</li><br>
                                                     <li>희망 재료: {{ est.material }}</li><br>
                                                     <li>제작 방식: {{ est.method }}</li><br>
                                                     <li>갯수: {{ est.pieces }}</li><br>
                                                     <li>요청 사항: {{ est.detail }}</li><br>
-                                                    <li>등록 날짜 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
+                                                    <li>등록일 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -60,7 +60,7 @@
             </td>
             <td id="td1" style="padding: 20px;">
                 <div id="Center">
-                    <h1 id="Head">입찰중</h1>
+                    <h1 id="Head">견적 제시 완료 품목</h1>
                     {% if bidding %}
                         {% for b in bidding %}
                         <button id="CenterItem" style="border-radius: 10px;">
@@ -71,13 +71,13 @@
                                     </td>
                                     <td>
                                         <ul style="float: center; list-style:none">
-                                            <li>구매자: {{ b.estimate_id.buyer_id }}</li><br>
+                                            <li>의뢰인: {{ b.estimate_id.buyer_id }}</li><br>
                                             <li>제품명: {{ b.estimate_id.project_name }}</li><br>
                                             <li>희망 재료: {{ b.estimate_id.material }}</li><br>
                                             <li>제작 방식: {{ b.estimate_id.method }}</li><br>
                                             <li>요청 사항: {{ b.estimate_id.detail }}</li><br>
-                                            <li>입찰 가격 : {{ b.price | intcomma }}</li><br>
-                                            <li>입찰 날짜 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
+                                            <li>견적 제시 가격 : {{ b.price | intcomma }}</li><br>
+                                            <li>견적 제시일 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -91,7 +91,7 @@
             </td>
             <td id="td1" style="padding: 20px;">
                 <div id="Right">
-                    <h1 id="Head">낙찰받은품목</h1>
+                    <h1 id="Head">거래 완료 품목</h1>
                     {% if completed_bid %}
                         {% for c in completed_bid %}
                             <a href={% url 'trade:sell_complete' c.bid_id %}>
@@ -103,12 +103,12 @@
                                         </td>
                                         <td>
                                             <ul style="float: center; list-style:none">
-                                                <li>구매자: {{ c.estimate_id.buyer_id }}</li><br>
+                                                <li>의뢰인: {{ c.estimate_id.buyer_id }}</li><br>
                                                 <li>제품명: {{ c.estimate_id.project_name }}</li><br>
                                                 <li>희망 재료: {{ c.estimate_id.material }}</li><br>
                                                 <li>제작 방식: {{ c.estimate_id.method }}</li><br>
                                                 <li>요청 사항: {{ c.estimate_id.detail }}</li><br>
-                                                <li>낙찰 가격 : {{ c.price | intcomma }}</li><br>
+                                                <li>거래완료 가격 : {{ c.price | intcomma }}</li><br>
                                                 <li>거래완료일 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                             </ul>
                                         </td>
