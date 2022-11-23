@@ -16,8 +16,8 @@
             <div class="col">
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block" style="text-align: center;">
-                    <div class="row p-1">
-                        <img style="width: 150px; height: 150px;"src="{{ estimate.drawing.url }}" alt=""> 
+                    <div style="width: 200px;" class="row p-1">
+                        <img style="width: auto;" src="{{ estimate.drawing.url }}" alt=""> 
                         <a href="#" class="btn btn-sm btn-secondary border-white bg-gray">도면상세보기</a>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
             <header>생산자 정보</header>
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block">                
-                    <p>{{ seller_info.username }}</p>
-                    <img src={% static 'images/Anonymous.png' %} style="height:100px; width:100px;" alt="판매자">
+                    <p style="margin: 10px;">{{ seller_info.username }}</p>
+                    <img src={% static 'images/Anonymous.png' %} style="border: 1px solid black; height:100px; width:100px; margin: 5px; border-radius: 50%;" alt="판매자">
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
                     <p>주소: {{ seller_info.address }} <br>
