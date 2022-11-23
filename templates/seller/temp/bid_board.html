@@ -23,13 +23,10 @@
 </head>
 <body>
     <table id="tb" style="margin: auto;">
-        <br>
-        <th><h1 id="Head">입찰가능품목</h1></th>
-        <th><h1 id="Head">입찰중</h1></th>
-        <th><h1 id="Head">낙찰받은품목</h1></th>
         <tr>
             <td id="td1" style="padding: 20px;">
                 <div id="Left">
+                    <h1 id="Head">입찰가능품목</h1>
                         {% if estimates %}
                             {% for est in estimates %}
                             <a href={% url 'sell:estimate_detail' est.estimate_id %}>
@@ -62,6 +59,7 @@
             </td>
             <td id="td1" style="padding: 20px;">
                 <div id="Center">
+                    <h1 id="Head">입찰중</h1>
                     {% if bidding %}
                         {% for b in bidding %}
                         <button id="CenterItem" style="border-radius: 10px;">
@@ -92,6 +90,7 @@
             </td>
             <td id="td1" style="padding: 20px;">
                 <div id="Right">
+                    <h1 id="Head">낙찰받은품목</h1>
                     {% if completed_bid %}
                         {% for c in completed_bid %}
                             <a href={% url 'trade:sell_complete' c.bid_id %}>
