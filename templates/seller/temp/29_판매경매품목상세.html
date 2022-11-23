@@ -35,7 +35,7 @@
                             <form method='post'>
                                 {% csrf_token %}
                                 <input type="number" name="price" id="price"> 원</input>
-                                <button type="submit" onclick="javascript:btn()">견적 입찰</button>
+                                <button type="submit" onclick="javascript:btn()">견적 제시</button>
                                 <script> 
                                     function btn(){  
                                         if(confirm("견적 제시 하시겠습니까?")){
@@ -43,6 +43,17 @@
                                         }
                                     } 
                                 </script>
+                                <!-- 
+                                아래 코드가 비드보드 '견적 제시 완료 품목'건 클릭 시 적용되면 될 듯 합니다.
+                                <button type="submit" onclick="javascript:btn()">제시 가격 수정</button>
+                                <script> 
+                                    function btn(){  
+                                        if(confirm("견적 제시 가격을 수정하시겠습니까?")){
+                                            alert("견적 제시 가격이 수정되었습니다.");
+                                        }
+                                    } 
+                                </script>
+                                -->
                             </form>
 						</header>
 					</div>
