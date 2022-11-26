@@ -9,6 +9,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load char_DashFormatting %}
 {% block content %}
 <div id="form">
   <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -20,12 +21,12 @@
         <div class="card-body">
           <h5 class="card-title">{{ bid.seller_id.username }}</h5>
           <p class="card-text">
-            
+            {% comment %} <li>평점 : 4.2 / 5.0</li> {% endcomment %}
+            <li>주소 : {{ bid.seller_id.address }}</li>
+            <li>전화번호 : {{ bid.seller_id.TEL | char_DashFormatting }}</li>
             <li>입찰 가격 : {{ bid.price | intcomma }}원</li>
             {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
-      
           </p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">입찰상세</button>
           <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
           <script> 
             function btn(){  
@@ -39,45 +40,16 @@
       </div>
     </div>
     {% comment %} detail modal {% endcomment %}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ bid.seller_id.username }}</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <img src="{% static 'images/Anonymous.png' %}" class="card-img-top" alt="생산자 사진" style="height:200px; width:200px;">
-            <li>평점 : 4.2 / 5.0</li>
-            <li>주소 : {{ bid.seller_id.address }}</li>
-            <li>전화번호 : {{ bid.seller_id.TEL }}</li>
-            <li>사용기기 : 큐비콘 스타일 플러스 3D 프린터</li>
-            <li>판매자 소개 : 창원대학교 신소재공학부 3D프린트 연구실 입니다.</li>
-            <br>
-            <label>제작이력</label>
-            <li>...</li>
-            <li>...</li>
-            <br>                    
-            <label>후기&평점</label>
-            <li>* 제작기간이 짧아요 (4.5/5)</li>
-            <li>* 믿을 수 있는 기관, 그에 맞는 품질 (5/5)</li>                    
-          </div>
-          <div class="modal-footer">
-            <label>입찰 가격 : {{ bid.price | intcomma }}원</label>
-            <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
-            <script> 
-              function btn(){  
-                  if(confirm("해당 생산자와 거래하시겠습니까?")){
-                      alert("거래 완료!");
-                      location.href='{% url 'trade:buy_complete' bid.bid_id %}'
-                  }
-              } 
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
   {% endfor %}
   </div>
 </div>
 {% endblock %}
+
+{% comment %} var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-body input').val(recipient)
+    console.log("im modal") {% endcomment %}
