@@ -45,7 +45,7 @@
                                                     <li>제작 방식: {{ est.method }}</li><br>
                                                     <li>갯수: {{ est.pieces }}</li><br>
                                                     <li>요청 사항: {{ est.detail }}</li><br>
-                                                    <li>등록 날짜 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
+                                                    <li>등록 날짜 : {{ est.reg_date.year }}년 {{ est.reg_date.month }}월 {{ est.reg_date.day }}일</li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -92,24 +92,24 @@
             <td id="td1" style="padding: 20px;">
                 <div id="Right">
                     <h1 id="Head">낙찰받은품목</h1>
-                    {% if completed_bid %}
-                        {% for c in completed_bid %}
-                            <a href={% url 'trade:sell_complete' c.bid_id %}>
+                    {% if trade %}
+                        {% for t in trade %}
+                            <a href={% url 'trade:sell_complete' t.bid_id.bid_id %}>
                             <button id="RightItem" style="border-radius: 10px;">
                                 <table>
                                     <tr>
                                         <td>
-                                            <img style="width:150px; height:150px;" src="{{c.estimate_id.drawing.url}}" alt="도면 미리보기">
+                                            <img style="width:150px; height:150px;" src="{{t.estimate_id.drawing.url}}" alt="도면 미리보기">
                                         </td>
                                         <td>
                                             <ul style="float: center; list-style:none">
-                                                <li>구매자: {{ c.estimate_id.buyer_id }}</li><br>
-                                                <li>제품명: {{ c.estimate_id.project_name }}</li><br>
-                                                <li>희망 재료: {{ c.estimate_id.material }}</li><br>
-                                                <li>제작 방식: {{ c.estimate_id.method }}</li><br>
-                                                <li>요청 사항: {{ c.estimate_id.detail }}</li><br>
-                                                <li>낙찰 가격 : {{ c.price | intcomma }}</li><br>
-                                                <li>거래완료일 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
+                                                <li>구매자: {{ t.estimate_id.buyer_id }}</li><br>
+                                                <li>제품명: {{ t.estimate_id.project_name }}</li><br>
+                                                <li>희망 재료: {{ t.estimate_id.material }}</li><br>
+                                                <li>제작 방식: {{ t.estimate_id.method }}</li><br>
+                                                <li>요청 사항: {{ t.estimate_id.detail }}</li><br>
+                                                <li>낙찰 가격 : {{ t.bid_id.price | intcomma }}</li><br>
+                                                <li>거래완료일 : {{ t.success_date.year }}년 {{ t.success_date.month }}월 {{ t.success_date.day }}일</li>
                                             </ul>
                                         </td>
                                     </tr>

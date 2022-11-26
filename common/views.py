@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from common.forms import SignupForm
 from sell.models import Equipment
 from trade.models import Trade, Bid, Estimate
-from django import template
 # Create your views here.
 
 def index(request):
@@ -87,12 +86,3 @@ def signup_seller(request):
 
     return render(request, '../templates/common/temp/14_회원가입(생산자).html', {'form': default_form})
 
-register = template.Library()
-
-@register.filter
-def convertPassword(value):
-    """
-    패스워드를 글자길이와 무관하게 '********'형태로 변경시켜준다.
-    """
-    value = "********"
-    return value

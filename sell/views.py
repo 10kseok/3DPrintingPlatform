@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import generic
 from django.db.models import Q
-from trade.models import Estimate, Bid
+from trade.models import Estimate, Bid, Trade
 from sell.models import Equipment
 from django.utils import timezone
 # Create your views here.
@@ -23,12 +23,13 @@ def bid_board(request):
     # 3 - 1 자신이 입찰 넣은 Estimate는 available_material에서 제외
     available_estimates = available_estimates.filter(~Q(estimate_id__in=[bid.estimate_id.estimate_id for bid in bidding]))
     # 4. 낙찰된 건 조회
-    completed_bid = Bid.objects.filter(finished=True, seller_id=request.user).order_by('-bid_date')
+    completed_bid = Bid.objects.filter(finished=True, seller_id=request.user)
+    trade = Trade.objects.filter(bid_id__in=completed_bid).order_by('-success_date')
     # 넘겨줄 데이터
     context = {
         "estimates": available_estimates,
         "bidding": bidding,
-        "completed_bid": completed_bid,
+        "trade": trade,
     }
     return render(request, "seller/temp/bid_board.html", context)
 
