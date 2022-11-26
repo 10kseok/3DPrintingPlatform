@@ -35,20 +35,33 @@ def bid_board(request):
 
 def estimate_detail(request, estimate_id):
     estimate = Estimate.objects.get(pk=estimate_id)
-    # 가격 제안시
+    try:
+        # 입찰한 내역이 있을 때(견적 수정)
+        Bid.objects.get(seller_id=request.user, estimate_id=estimate)
+        isUpdate = True
+    except:
+        # 새로운 입찰일 때(견적 제시)
+        isUpdate = False
+
     if request.method == 'POST':
+        # Bid 업데이트
+        if Bid.objects.get(seller_id=request.user, estimate_id=estimate):
+            bid = Bid.objects.get(seller_id=request.user, estimate_id=estimate)
+            bid.price = int(request.POST.get('price'))
+            bid.bid_date = timezone.now()
+        else:
         # Bid 데이터 생성
-        bid = Bid(
-            seller_id=request.user,
-            estimate_id=estimate,
-            price=int(request.POST.get('price')),
-            bid_date=timezone.now(),
-            finished=False
-        )
+            bid = Bid(
+                seller_id=request.user,
+                estimate_id=estimate,
+                price=int(request.POST.get('price')),
+                bid_date=timezone.now(),
+                finished=False
+            )
         bid.save()
         return redirect('sell:bid_board')
     
-    return render(request, "seller/temp/29_판매경매품목상세.html", { "estimate": estimate })
+    return render(request, "seller/temp/29_판매경매품목상세.html", { "estimate": estimate, "isUpdate": isUpdate })
     
 # p29 (sell/detail/)
 def detail(request):

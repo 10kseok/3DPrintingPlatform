@@ -63,6 +63,7 @@
                     <h1 id="Head">입찰중</h1>
                     {% if bidding %}
                         {% for b in bidding %}
+                        <a href={% url 'sell:estimate_detail' b.estimate_id.estimate_id %}>
                         <button id="CenterItem" style="border-radius: 10px;">
                             <table>
                                 <tr>
@@ -83,6 +84,7 @@
                                 </tr>
                             </table>
                         </button>
+                        <a>
                         {% endfor %}
                     {% else %}
                         <p>No Bidding are available.</p>

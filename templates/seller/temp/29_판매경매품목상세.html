@@ -35,7 +35,12 @@
                             <form method='post'>
                                 {% csrf_token %}
                                 <input type="number" name="price" id="price"> 원</input>
-                                <button type="submit" onclick="javascript:btn()">견적 입찰</button>
+                                <button type="submit" onclick="javascript:btn()">
+                                    {% if isUpdate %}
+                                        견적 수정
+                                    {% else %}
+                                        견적 입찰
+                                    {% endif %}</button>
                                 <script> 
                                     function btn(){  
                                         if(confirm("입찰하시겠습니까?")){
