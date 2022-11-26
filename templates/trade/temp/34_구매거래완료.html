@@ -10,8 +10,8 @@
             <span class="fs-4">거래가 완료되었습니다.</span>
           </a>
         </header>
-        {% if trade_log %}
-          <p style="color: gray; text-align: right;">결제일 :{{trade.success_date}}</p>
+        {% if trade %}
+          <p style="color: gray; text-align: right;">결제일 :{{ trade.success_date }}</p>
         {% endif %}
         <div class="row">
             <div class="col">
@@ -50,7 +50,7 @@
                     <p>주소: {{ seller_info.address }} <br>
                         연락처: {{ seller_info.TEL | char_DashFormatting }} <br>
                         {% if bid %}
-                          입찰가격: {{bid.price | intcomma}}원 <br>
+                          입찰가격: {{ bid.price | intcomma }}원 <br>
                         {% endif %}
                         대기작업수: 7 <br>
                         예상 작업완료일자: 22.10.21
@@ -63,9 +63,9 @@
               <div class="row g-0  overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
                 <div style="color: gray; text-align: right;" >
                   {% if bid %}
-                    <p>주문금액: {{bid.price | intcomma}}원<br>
+                    <p>주문금액: {{ bid.price | intcomma }}원<br>
                       할인금액: (-)0원<br>
-                      총 결제금액: {{bid.price | intcomma}}원</p>
+                      총 결제금액: {{ bid.price | intcomma }}원</p>
                   {% endif %}
                 </div>
               </div>
@@ -76,4 +76,4 @@
           &copy; 2022
         </footer>
       </div>
-      {% endblock %}
+{% endblock %}
