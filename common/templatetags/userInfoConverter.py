@@ -5,6 +5,15 @@ register = template.Library()
 
 @register.filter
 @stringfilter
+def convertPassword(value):
+    """
+    패스워드를 글자길이와 무관하게 '********'형태로 변경시켜준다.
+    """
+    value = "********"
+    return value
+
+@register.filter
+@stringfilter
 def char_DashFormatting(value):
     """
     String을 전화번호 형태로 변환, 
