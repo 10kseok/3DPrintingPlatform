@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% load static %}
+{% load userInfoConverter %}
 {% block content %}
     <div class="container py-4">
         <header class="p-3 mb-4 bg-light rounded-3">
@@ -47,7 +48,7 @@
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
                     <p>주소: {{ seller_info.address }} <br>
-                        연락처: {{ seller_info.TEL }} <br>
+                        연락처: {{ seller_info.TEL | char_DashFormatting }} <br>
                         {% if bid %}
                           입찰가격: {{bid.price | intcomma}}원 <br>
                         {% endif %}
