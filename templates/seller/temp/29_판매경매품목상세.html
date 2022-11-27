@@ -15,7 +15,7 @@
                                 <a href="#" class="image left"><img src="{{estimate.drawing.url}}" alt="" style="width: 200px;" /></a>
                                 <div class="inner">
                                     <h3>{{ estimate.project_name }}</h3>
-                                    <p>구매자 : {{ estimate.buyer_id}}</p>
+                                    <p>의뢰인 : {{ estimate.buyer_id}}</p>
                                     <p>재료 : {{ estimate.material }}</p>
                                     <p>제작방식 : {{ estimate.method }}</p>
                                     <p>요청사항 : {{ estimate.detail }}</p>
@@ -38,16 +38,23 @@
                                 <button type="submit" onclick="javascript:btn()">
                                     {% if isUpdate %}
                                         견적 수정
+                                        <script> 
+                                            function btn(){  
+                                                if(confirm("견적 수정 하시겠습니까?")){
+                                                    alert("견적 수정 되었습니다.");
+                                                }
+                                            } 
+                                        </script>
                                     {% else %}
-                                        견적 입찰
+                                        견적 제시
+                                        <script> 
+                                            function btn(){  
+                                                if(confirm("견적 제시 하시겠습니까?")){
+                                                    alert("견적 제시 되었습니다.");
+                                                }
+                                            } 
+                                        </script>
                                     {% endif %}</button>
-                                <script> 
-                                    function btn(){  
-                                        if(confirm("입찰하시겠습니까?")){
-                                            alert("입찰되었습니다.");
-                                        }
-                                    } 
-                                </script>
                             </form>
 						</header>
 					</div>

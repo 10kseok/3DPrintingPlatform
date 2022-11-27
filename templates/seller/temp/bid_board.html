@@ -39,13 +39,13 @@
                                             <td>
                                                 <ul style="float: center; list-style:none">
                                                     <br>
-                                                    <li>구매자: {{ est.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
+                                                    <li>의뢰인: {{ est.buyer_id }}</li><br>  {% comment %} buyer 객체가 연결되어있음 {% endcomment %} 
                                                     <li>제품명: {{ est.project_name }}</li><br>
                                                     <li>희망 재료: {{ est.material }}</li><br>
                                                     <li>제작 방식: {{ est.method }}</li><br>
                                                     <li>갯수: {{ est.pieces }}</li><br>
                                                     <li>요청 사항: {{ est.detail }}</li><br>
-                                                    <li>등록 날짜 : {{ est.reg_date.year }}년 {{ est.reg_date.month }}월 {{ est.reg_date.day }}일</li>
+                                                    <li>등록일 : {{ est.reg_date.year }}년 {{ est.reg_date.month }}월 {{ est.reg_date.day }}일</li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -72,13 +72,13 @@
                                     </td>
                                     <td>
                                         <ul style="float: center; list-style:none">
-                                            <li>구매자: {{ b.estimate_id.buyer_id }}</li><br>
+                                            <li>의뢰인: {{ b.estimate_id.buyer_id }}</li><br>
                                             <li>제품명: {{ b.estimate_id.project_name }}</li><br>
                                             <li>희망 재료: {{ b.estimate_id.material }}</li><br>
                                             <li>제작 방식: {{ b.estimate_id.method }}</li><br>
                                             <li>요청 사항: {{ b.estimate_id.detail }}</li><br>
-                                            <li>입찰 가격 : {{ b.price | intcomma }}</li><br>
-                                            <li>입찰 날짜 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
+                                            <li>견적제시 가격 : {{ b.price | intcomma }}</li><br>
+                                            <li>견적 제시일 : {{ b.bid_date.year }}년 {{ b.bid_date.month }}월 {{ b.bid_date.day }}일</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -105,12 +105,12 @@
                                         </td>
                                         <td>
                                             <ul style="float: center; list-style:none">
-                                                <li>구매자: {{ t.estimate_id.buyer_id }}</li><br>
+                                                <li>의뢰인: {{ t.estimate_id.buyer_id }}</li><br>
                                                 <li>제품명: {{ t.estimate_id.project_name }}</li><br>
                                                 <li>희망 재료: {{ t.estimate_id.material }}</li><br>
                                                 <li>제작 방식: {{ t.estimate_id.method }}</li><br>
                                                 <li>요청 사항: {{ t.estimate_id.detail }}</li><br>
-                                                <li>낙찰 가격 : {{ t.bid_id.price | intcomma }}</li><br>
+                                                <li>거래완료 가격 : {{ t.bid_id.price | intcomma }}</li><br>
                                                 <li>거래완료일 : {{ t.success_date.year }}년 {{ t.success_date.month }}월 {{ t.success_date.day }}일</li>
                                             </ul>
                                         </td>

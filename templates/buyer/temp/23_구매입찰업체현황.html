@@ -13,6 +13,7 @@
 {% block content %}
 <div id="form">
   <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% if bids %}
     {% for bid in bids %}
     {% comment %} seller info thumnail {% endcomment %}
     <div class="col">
@@ -24,7 +25,7 @@
             {% comment %} <li>평점 : 4.2 / 5.0</li> {% endcomment %}
             <li>주소 : {{ bid.seller_id.address }}</li>
             <li>전화번호 : {{ bid.seller_id.TEL | char_DashFormatting }}</li>
-            <li>입찰 가격 : {{ bid.price | intcomma }}원</li>
+            <li>견적제시 가격 : {{ bid.price | intcomma }}원</li>
             {% comment %} 여기 추가할 정보를 결정해야함. 현재 더미에서 보이는 것에서 or 다른 것 {% endcomment %}
           </p>
           <button type="button" class="btn btn-primary" onclick="btn()">생산자 선택</button>
@@ -41,6 +42,9 @@
     </div>
     {% comment %} detail modal {% endcomment %}
   {% endfor %}
+  {% else %}
+  <p>Bids do not exist.</p>
+  {% endif %}
   </div>
 </div>
 {% endblock %}

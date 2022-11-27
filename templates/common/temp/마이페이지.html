@@ -87,61 +87,69 @@
                 <!--구매자만 보이는 거래내역-->
                   <!-- 거래내역 클릭 후 상세정보 팝업 -->
                 {% if user.flag == "BUYER" %}
-                    {% for trade in trade_log %}
-                        <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' trade.bid_id.bid_id %}'">
-                            <div class="row">
-                                <div class="col">
-                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                    <div class="col-auto d-none d-lg-block" style="text-align: center;">
-                                        <div class="row p-1">
-                                            <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt="도안 이미지"> 
+                    {% if trade_log %}
+                        {% for trade in trade_log %}
+                            <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:buy_complete' trade.bid_id.bid_id %}'">
+                                <div class="row">
+                                    <div class="col">
+                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col-auto d-none d-lg-block" style="text-align: center;">
+                                            <div class="row p-1">
+                                                <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt="도안 이미지"> 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col p-4 d-flex flex-column position-static">    
-                                        <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
-                                        <div style="color: white; text-align: right;" >
-                                            <p>주문금액: {{ trade.bid_id.price | intcomma }}원<br>
-                                                할인금액: (-)0원<br>
-                                                총 결제금액: {{ trade.bid_id.price | intcomma}}원</p>
-                                        </div>
+                                        <div class="col p-4 d-flex flex-column position-static">    
+                                            <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                                            <div style="color: white; text-align: right;" >
+                                                <p>주문금액: {{ trade.bid_id.price | intcomma }}원<br>
+                                                    할인금액: (-)0원<br>
+                                                    총 결제금액: {{ trade.bid_id.price | intcomma}}원</p>
+                                            </div>
 
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </button>
-                        <!--여기까지 구매자만 보이는 거래내역-->    
-                    {% endfor %}
-                {% else %}
-                    {% for trade in trade_log %}
-                    <!--판매자만 보이는 거래내역-->
-                    <!-- 거래내역 클릭 후 상세정보 팝업 -->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:sell_complete' trade.bid_id.bid_id %}'">
-                            <div class="row">
-                                <div class="col">
-                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                    <div class="col p-4 d-flex flex-column position-static">
-                                                <div class="col-auto d-none d-lg-block" style="text-align: center;">
-                                                    <div class="row p-1">
-                                                        <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt=""> 
-                                                    </div>
-                                                </div>
-                                                <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
-            
-                                        <div style="color: white; text-align: right;" >
-                                            <p>주문금액: {{trade.bid_id.price | intcomma}}원<br>
-                                                할인금액: (-)0원<br>
-                                                총 결제금액: {{trade.bid_id.price | intcomma}}원
-                                            </p>
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
-                                </div>
-                                </div>
-                        </button><br>
-                            <!--여기까지 판매자만 보이는 거래내역-->
-                    {% endfor %}
+                            </button>
+                            <!--여기까지 구매자만 보이는 거래내역-->    
+                        {% endfor %}
+                    {% else %}
+                    <p>Transaction details do not exist.</p>
+                    {% endif %}
+                {% else %}
+                    {% if trade_log %}
+                        {% for trade in trade_log %}
+                        <!--판매자만 보이는 거래내역-->
+                        <!-- 거래내역 클릭 후 상세정보 팝업 -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" onclick="location.href='{% url 'trade:sell_complete' trade.bid_id.bid_id %}'">
+                                <div class="row">
+                                    <div class="col">
+                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                                    <div class="col-auto d-none d-lg-block" style="text-align: center;">
+                                                        <div class="row p-1">
+                                                            <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt=""> 
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                
+                                            <div style="color: white; text-align: right;" >
+                                                <p>주문금액: {{trade.bid_id.price | intcomma}}원<br>
+                                                    할인금액: (-)0원<br>
+                                                    총 결제금액: {{trade.bid_id.price | intcomma}}원
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                            </button><br>
+                                <!--여기까지 판매자만 보이는 거래내역-->
+                        {% endfor %}
+                    {% else %}
+                    <p>Transaction details do not exist.</p>
+                    {% endif %}
                 {% endif %}
             </form>
         </div>
