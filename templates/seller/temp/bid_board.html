@@ -26,7 +26,7 @@
         <tr>
             <td id="td1" style="padding: 20px;">
                 <div id="Left">
-                    <h1 id="Head">입찰가능품목</h1>
+                    <h1 id="Head">견적제시 가능품목</h1>
                         {% if estimates %}
                             {% for est in estimates %}
                             <a href={% url 'sell:estimate_detail' est.estimate_id %}>
@@ -60,7 +60,7 @@
             </td>
             <td id="td1" style="padding: 20px;">
                 <div id="Center">
-                    <h1 id="Head">입찰중</h1>
+                    <h1 id="Head">견적제시 완료품목</h1>
                     {% if bidding %}
                         {% for b in bidding %}
                         <a href={% url 'sell:estimate_detail' b.estimate_id.estimate_id %}>
@@ -93,7 +93,7 @@
             </td>
             <td id="td1" style="padding: 20px;">
                 <div id="Right">
-                    <h1 id="Head">낙찰받은품목</h1>
+                    <h1 id="Head">거래완료 품목</h1>
                     {% if trade %}
                         {% for t in trade %}
                             <a href={% url 'trade:sell_complete' t.bid_id.bid_id %}>

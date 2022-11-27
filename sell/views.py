@@ -45,12 +45,12 @@ def estimate_detail(request, estimate_id):
 
     if request.method == 'POST':
         # Bid 업데이트
-        if Bid.objects.get(seller_id=request.user, estimate_id=estimate):
+        try:
             bid = Bid.objects.get(seller_id=request.user, estimate_id=estimate)
             bid.price = int(request.POST.get('price'))
             bid.bid_date = timezone.now()
-        else:
-        # Bid 데이터 생성
+        except:
+        # Bid 데이터 첫 생성
             bid = Bid(
                 seller_id=request.user,
                 estimate_id=estimate,
