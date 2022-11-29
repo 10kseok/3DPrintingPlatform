@@ -95,7 +95,7 @@
                 {% if user.flag == "BUYER" %}
                     {% if trade_log %}
                         {% for trade in trade_log %}
-                            <button type="button" class="btn btn-outline-primary" onclick="location.href='{% url 'trade:buy_complete' trade.bid_id.bid_id %}'">
+                            <button type="button" class="btn btn-link" style="color:black; text-decoration:none;" onclick="location.href='{% url 'trade:buy_complete' trade.bid_id.bid_id %}'">
                                 <div class="row">
                                     <div class="col">
                                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -104,15 +104,15 @@
                                                     <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt="도안 이미지"> 
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col p-4 d-flex flex-column position-static">    
-                                            <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
-                                            <div style="color: blue; text-align: right;" >
-                                                <p>
-                                                    주문금액: {{ trade.bid_id.price | intcomma }}원<br>
-                                                    할인금액: (-)0원<br>
-                                                    총 결제금액: {{ trade.bid_id.price | intcomma}}원
-                                                </p>
+                                            <div class="col p-4 d-flex flex-column position-static">    
+                                                <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                                                <div style="color: blue; text-align: right;" >
+                                                    <p>
+                                                        주문금액: {{ trade.bid_id.price | intcomma }}원<br>
+                                                        할인금액: (-)0원<br>
+                                                        총 결제금액: {{ trade.bid_id.price | intcomma}}원
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                 {% else %}
                     {% if trade_log %}
                         {% for trade in trade_log %}
-                            <button type="button" class="btn btn-outline-primary" onclick="location.href='{% url 'trade:sell_complete' trade.bid_id.bid_id %}'">
+                            <button type="button" class="btn btn-link" overflow="auto"  style="color:black; text-decoration:none;" onclick="location.href='{% url 'trade:sell_complete' trade.bid_id.bid_id %}'">
                                 <div class="row">
                                     <div class="col">
                                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -137,15 +137,15 @@
                                                     <img style="width: 150px; height: 150px"src="{{ trade.estimate_id.drawing.url }}" alt=""> 
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col p-4 d-flex flex-column position-static">    
-                                            <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
-                                            <div style="color: blue; text-align: right;" >
-                                                <p>
-                                                    주문금액: {{trade.bid_id.price | intcomma}}원<br>
-                                                    할인금액: (-)0원<br>
-                                                    총 결제금액: {{trade.bid_id.price | intcomma}}원
-                                                </p>
+                                            <div class="col p-4 d-flex flex-column position-static">    
+                                                <h3 class="mb">{{ trade.estimate_id.project_name }}</h3>
+                                                <div style="color: blue; text-align: right;" >
+                                                    <p>
+                                                        주문금액: {{trade.bid_id.price | intcomma}}원<br>
+                                                        할인금액: (-)0원<br>
+                                                        총 결제금액: {{trade.bid_id.price | intcomma}}원
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
