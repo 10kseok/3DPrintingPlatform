@@ -6,7 +6,6 @@
 {% extends 'base.html' %}
 {% block content %}
 		<div id="page">
-            
             <!-- Posts -->
                 <section class="wrapper style1">
                     <div class="container">
@@ -19,10 +18,11 @@
                                     <p>재료 : {{ estimate.material }}</p>
                                     <p>제작방식 : {{ estimate.method }}</p>
                                     <p>요청사항 : {{ estimate.detail }}</p>
-                                    <p>도면파일 : {{ estimate.drawing }}
+                                    <p>도면파일 : {{ estimate.drawing }}</p>
+                                        <div>
                                         <button>미리보기</button><!--어딘가로 연결되는 링크-->
                                         <button>다운로드</button><!--어딘가로 연결되는 링크-->
-                                    </p>
+                                        </div>
                                 </div>    
                             </div>
                         </section>
@@ -32,15 +32,16 @@
 				<section id="cta" class="wrapper style3">
 					<div class="container">
 						<header>
-                            <form method='post'>
+                            <form method='post' id='submitFrm'>
                                 {% csrf_token %}
                                 <input type="number" name="price" id="price"> 원</input>
-                                <button type="submit" onclick="javascript:btn()">
+                                <button id='submitBtn' type="button" onclick="javascript:btn()">
                                     {% if isUpdate %}
                                         견적 수정
                                         <script> 
                                             function btn(){  
                                                 if(confirm("견적 수정 하시겠습니까?")){
+                                                    document.getElementById('submitFrm').submit(); 
                                                     alert("견적 수정 되었습니다.");
                                                 }
                                             } 
@@ -50,11 +51,13 @@
                                         <script> 
                                             function btn(){  
                                                 if(confirm("견적 제시 하시겠습니까?")){
+                                                    document.getElementById('submitFrm').submit(); 
                                                     alert("견적 제시 되었습니다.");
                                                 }
                                             } 
                                         </script>
-                                    {% endif %}</button>
+                                    {% endif %}
+                                </button>
                             </form>
 						</header>
 					</div>
