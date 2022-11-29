@@ -6,7 +6,6 @@
 {% extends 'base.html' %}
 {% block content %}
 		<div id="page">
-            
             <!-- Posts -->
                 <section class="wrapper style1">
                     <div class="container">
@@ -20,8 +19,14 @@
                                     <p>제작방식 : {{ estimate.method }}</p>
                                     <p>요청사항 : {{ estimate.detail }}</p>
                                     <p>도면파일 : {{ estimate.drawing }}
-                                        <button>미리보기</button><!--어딘가로 연결되는 링크-->
-                                        <button>다운로드</button><!--어딘가로 연결되는 링크-->
+                                        <button>
+                                            미리보기
+                                        </button>
+                                        <button>
+                                            <a href={{estimate.drawing.url}} download={{estimate.drawing.url}} style="color:black; text-decoration:none;">
+                                                다운로드
+                                            </a>
+                                        </button>
                                     </p>
                                 </div>    
                             </div>
