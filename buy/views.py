@@ -18,15 +18,8 @@ def main(request):
 # buy/estimates
 def estimate_list(request):
     page = request.GET.get('page', '1')  # 페이지
-    own_estimate_list = Estimate.objects.filter(buyer_id=request.user)
-    # Bid에서 낙찰하지 않은 것만 보여준다.
-    finished_bid = Bid.objects.filter(
-        estimate_id__in=own_estimate_list,
-        finished=True
-    )
-    cannot_bid_estimates = [bid.estimate_id.pk for bid in finished_bid]
-    # 낙찰된 품목을 제외하고 등록된 견적들을 조회.
-    own_estimate_list = own_estimate_list.filter(~Q(estimate_id__in=cannot_bid_estimates)) 
+    # 자신이 등록한 견적 중 낙찰되지 않은 견적들 조회
+    own_estimate_list = Estimate.objects.filter(buyer_id=request.user, canBid=True)
     
     paginator = Paginator(own_estimate_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
