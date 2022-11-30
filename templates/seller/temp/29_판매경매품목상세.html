@@ -9,27 +9,24 @@
             <!-- Posts -->
                 <section class="wrapper style1">
                     <div class="container">
-                        <section class="col-6 col-12-narrower">
+                        <section class="col-6 col-12">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="{{estimate.drawing.url}}" alt="" style="width: 200px;" /></a>
+                                <a href="#" onclick="openPopup()" class="image left"><img src="{{estimate.drawing.url}}" alt="" style="width: 200px; height: 200px" /></a>
+                                <script>
+                                    function openPopup() {			
+                                        window.open("{{estimate.drawing.url}}", "pop", "width=500, height=400");		
+                                    }
+                                </script>
                                 <div class="inner">
                                     <h3>{{ estimate.project_name }}</h3>
                                     <p>의뢰인 : {{ estimate.buyer_id}}</p>
                                     <p>재료 : {{ estimate.material }}</p>
                                     <p>제작방식 : {{ estimate.method }}</p>
                                     <p>요청사항 : {{ estimate.detail }}</p>
-                                    <p>도면파일 : {{ estimate.drawing }}</p>
-                                    <div>
-                                        <button onclick="openPopup()">
-                                            미리보기
-                                            <script>
-                                                function openPopup() {			
-                                                    window.open("{{estimate.drawing.url}}", "pop", "width=500, height=400");		
-                                                }
-                                            </script>
-                                        </button>
-                                        <button>
-                                            <a href={{estimate.drawing.url}} download={{estimate.drawing.url}} style="color:black; text-decoration:none;">
+                                    <div style="float: left;">
+                                        <p style="float: left;">도면파일 : {{estimate.drawing}}</p>
+                                        <button style="float: left;" type="button" class="btn btn-secondary">
+                                            <a href={{estimate.drawing.url}} download={{estimate.drawing.url}} style="color:white; text-decoration:none;">
                                                 다운로드
                                             </a>
                                         </button>
@@ -46,7 +43,7 @@
                             <form method='post' id='submitFrm'>
                                 {% csrf_token %}
                                 <input type="number" name="price" id="price"> 원</input>
-                                <button id='submitBtn' type="button" onclick="javascript:btn()">
+                                <button type="button" class="btn btn-secondary" onclick="javascript:btn()">
                                     {% if isUpdate %}
                                         견적 수정
                                         <script> 
