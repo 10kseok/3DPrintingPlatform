@@ -1,10 +1,9 @@
 <style>
     div li {
         list-style: none;
-        text-align: center;
     }
-    image {
-        float: left;
+    #image {
+        margin: auto;
     }
     #form {
         margin: 15px;
@@ -12,29 +11,58 @@
 </style>
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    .gridLayout {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-column-gap: 30px;
+    }
+</style>
 <div class="d-grid gap-2" id="form">
-    {% for estimate in estimate_list %}
-    <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url 'buy:estimate_detail' estimate.estimate_id %}'">
-        <div style="float: left" id="image">
-            <img style="width: 200px; height: 200px" src="{{ estimate.drawing.url }}" alt="도면 미리보기">
-        </div>
-        <li>
-            <ul>제품명: {{ estimate.project_name }}</ul>
-            <ul>수량: {{ estimate.pieces }}개</ul>
-            <ul>재료: {{ estimate.material }}</ul>
-            <ul>방식: {{ estimate.method }}</ul>
-            <ul>요청사항: {{ estimate.detail }}</ul>
-        </li>
+    <div class="gridLayout">
+        {% for estimate in estimate_list %}
+        <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url 'buy:estimate_detail' estimate.estimate_id %}'">
+            <table style="margin: auto; text-align: center;">
+                <tr>
+                    <td>
+                        <div id="image">
+                            <img style="width: 200px; height: 200px" src="{{ estimate.drawing.url }}" alt="도면 미리보기">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width: 200px;">
+                            <tr>
+                                <td>
+                                    <ul style="line-height: 2em;  padding: 0;">
+                                        <li>제품명</li>
+                                        <li>수량</li>
+                                        <li>재료</li>
+                                        <li>방식</li>
+                                        <li>요청사항</li>
+                                    </ul>
 
-    </button>
-    {% endfor %}
-    <button class="btn btn-primary" type="button" onclick="location.href='{% url 'buy:register_estimate' %}'">
-        <br>
-        +
-        <br>
-        견적 요청
-        <br><br>
-    </button>
+                                </td>
+                                <td style="text-align: right;">
+                                    <ul style="line-height: 2em; ">
+                                        <li>{{ estimate.project_name }}</li>
+                                        <li>{{ estimate.pieces }}개</li>
+                                        <li>{{ estimate.material }}</li>
+                                        <li>{{ estimate.method }}</li>
+                                        <li>{{ estimate.detail }}</li>
+                                    </ul>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </button>
+        {% endfor %}
+    </div>
+
 </div>
 <div style="position: fixed; bottom:20px; right:20px;">
     <button class="btn btn-primary" type="button" onclick="location.href='{% url 'buy:register_estimate' %}'">
