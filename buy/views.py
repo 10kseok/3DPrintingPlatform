@@ -3,8 +3,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.core.paginator import Paginator
-from django.views import generic
-from django.db.models import Exists, Q
 from trade.models import Estimate, Bid
 from .forms import EstimateForm
 
@@ -20,7 +18,7 @@ def estimate_list(request):
     page = request.GET.get('page', '1')  # 페이지
     # 자신이 등록한 견적 중 낙찰되지 않은 견적들 조회
     own_estimate_list = Estimate.objects.filter(buyer_id=request.user, canBid=True)
-    
+
     paginator = Paginator(own_estimate_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
     context = {'estimate_list': page_obj}

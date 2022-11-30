@@ -40,20 +40,16 @@
         </div>
       </div>
     </div>
-    {% comment %} detail modal {% endcomment %}
+    
   {% endfor %}
   {% else %}
-  <p>Bids do not exist.</p>
+  <header class="p-3 mb-7 bg-light rounded-3">
+    <a class="d-flex align-items-center text-dark text-decoration-none">
+      <img src="https://i.pinimg.com/564x/dd/fd/e1/ddfde19537a8c0c7779e70fa3466a266.jpg" width="50px" height="50px">
+      <span class="fs-4">아직 제시된 견적이 없습니다.</span>
+    </a>
+  </header>
   {% endif %}
   </div>
 </div>
 {% endblock %}
-
-{% comment %} var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('New message to ' + recipient)
-    modal.find('.modal-body input').val(recipient)
-    console.log("im modal") {% endcomment %}

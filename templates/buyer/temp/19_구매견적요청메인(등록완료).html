@@ -25,7 +25,6 @@
             <ul>방식: {{ estimate.method }}</ul>
             <ul>요청사항: {{ estimate.detail }}</ul>
         </li>
-
     </button>
     {% endfor %}
     <button class="btn btn-primary" type="button" onclick="location.href='{% url 'buy:register_estimate' %}'">
