@@ -20,14 +20,15 @@
     }
 </style>
 {% extends 'base.html' %}
+{% load accessModelFromID %}
 {% block content %}
 <div class="d-grid gap-2 rel" id="form">
-    
     {% for estimate in estimate_list %}
     <button class="btn btn-outline-primary position-relative" style=" margin: 5px;" type="button" onclick="location.href='{% url 'buy:estimate_detail' estimate.estimate_id %}'">
-        <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
-            99+
+        <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger" id="badgeSpan">
+            {{ estimate.estimate_id | getBidCount }}
         </span>
+
         <div style="float: left" id="image">
             <img style="width: 200px; height: 200px" src="{{ estimate.drawing.url }}" alt="도면 미리보기">
         </div>
@@ -40,6 +41,20 @@
         </li>
     </button>
     {% endfor %}
+    <script>
+        const spans = document.getElementsByTagName('span');
+
+        for (const span of spans) {
+            const bidCount = span.innerText
+
+            if (bidCount == 0) {
+                span.setAttribute("hidden", "hidden");
+            } else {
+                span.removeAttribute("hidden");
+            }
+        }
+    </script>
+    
     <button class="btn btn-primary" type="button" onclick="location.href='{% url 'buy:register_estimate' %}'">
         <br>
         +
