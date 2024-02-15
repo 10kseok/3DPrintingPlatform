@@ -4,7 +4,7 @@ CapstoneDesign
 >4명의 인원으로 개발을 진행한 프로젝트
 
 # 기술 스택
-Django, Sqlite, AWS, Bootstrap
+Django, Sqlite, AWS EC2, nginx, Bootstrap
 
 ---
 테스트 계정
